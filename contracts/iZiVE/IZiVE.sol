@@ -12,7 +12,7 @@ interface SmartWalletChecker {
     function check(address addr) external returns(bool);
 }
 
-contract Curve is Ownable, Multicall, ReentrancyGuard {
+contract IZiVE is Ownable, Multicall, ReentrancyGuard {
     using SafeERC20 for IERC20;
     
     struct Point {
