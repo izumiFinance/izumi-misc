@@ -4,6 +4,7 @@ const contracts = require("../deployed.js");
 
 const BigNumber = require('bignumber.js');
 const { ethereum } = require("../deployed.js");
+const { assert } = require("chai");
 
 const factoryJson = require(contracts.factoryJson);
 
@@ -13,10 +14,11 @@ const poolJson = require(contracts.poolJson);
 
 const v = process.argv
 const net = process.env.HARDHAT_NETWORK
+assert(net !== 'ethereum');
 const factoryAddress = contracts[net].factory;
 const swapRouterAddress = contracts[net].swapRouter;
 
-//Example: HARDHAT_NETWORK='izumiTest' node swap.js iZi WETH9 3000 0.00013 1.5
+//Example: HARDHAT_NETWORK='izumiTest' node swap.js WETH9 YIN 3000 4000 3
 
 const para = {
     token0Symbol: v[2],
@@ -59,17 +61,17 @@ async function priceNoDecimal(tokenAddr0, tokenAddr1, priceDecimal0By1) {
   return priceNoDecimal0By1;
 }
 
-async function movePriceDown(uniSwapRouter, trader, tokenXAddr, tokenYAddr, destSqrtPriceX96, amountInputLimit) {
+async function movePriceDown(uniSwapRouter, trader, tokenXAddr, tokenYAddr, fee, destSqrtPriceX96, amountInputLimit) {
 
   if (tokenXAddr != weth) {
     var tx = await uniSwapRouter.connect(trader).exactInputSingle({
       tokenIn: tokenXAddr,
       tokenOut: tokenYAddr,
-      fee: 3000,
+      fee: fee,
       recipient: trader.address,
       deadline: '0xffffffff',
       amountIn: amountInputLimit,
-      amountOutMinimum: '1',
+      amountOutMinimum: '0',
       sqrtPriceLimitX96: destSqrtPriceX96,
     });
     console.log('tx: ', tx);
@@ -80,11 +82,11 @@ async function movePriceDown(uniSwapRouter, trader, tokenXAddr, tokenYAddr, dest
     var tx0 = await uniSwapRouter.connect(trader).exactInputSingle({
       tokenIn: tokenXAddr,
       tokenOut: tokenYAddr,
-      fee: 3000,
+      fee: fee,
       recipient: trader.address,
       deadline: '0xffffffff',
       amountIn: amountInputLimit,
-      amountOutMinimum: '1',
+      amountOutMinimum: '0',
       sqrtPriceLimitX96: destSqrtPriceX96,
     },{value: amountInputLimit});
 
@@ -95,13 +97,13 @@ async function movePriceDown(uniSwapRouter, trader, tokenXAddr, tokenYAddr, dest
 
 }
 
-async function movePriceUp(uniSwapRouter, trader, tokenXAddr, tokenYAddr, destSqrtPriceX96, amountInputLimit) {
+async function movePriceUp(uniSwapRouter, trader, tokenXAddr, tokenYAddr, fee, destSqrtPriceX96, amountInputLimit) {
 
   if (tokenYAddr != weth) {
     var tx = await uniSwapRouter.connect(trader).exactInputSingle({
         tokenIn: tokenYAddr,
         tokenOut: tokenXAddr,
-        fee: 3000,
+        fee: fee,
         recipient: trader.address,
         deadline: '0xffffffff',
         amountIn: amountInputLimit,
@@ -116,7 +118,7 @@ async function movePriceUp(uniSwapRouter, trader, tokenXAddr, tokenYAddr, destSq
     var tx0 = await uniSwapRouter.connect(trader).exactInputSingle({
       tokenIn: tokenYAddr,
       tokenOut: tokenXAddr,
-      fee: 3000,
+      fee: fee,
       recipient: trader.address,
       deadline: '0xffffffff',
       amountIn: amountInputLimit,
@@ -163,7 +165,8 @@ async function main() {
   console.log("    destSqrtPrice0By1NoDecimal: ", destSqrtPrice0By1NoDecimal.toFixed(10));
   console.log("    destSqrtPriceX96: ", destSqrtPriceX96);
 
-  const [deployer, tester] = await hardhat.ethers.getSigners();
+  let [deployer, tester] = await hardhat.ethers.getSigners();
+  tester = deployer;
 
   const factoryContract = await hardhat.ethers.getContractFactory(factoryJson.abi, factoryJson.bytecode, deployer);
   const factory = factoryContract.attach(factoryAddress);
@@ -206,10 +209,10 @@ async function main() {
 
   if (BigNumber(destSqrtPriceX96).gt(currentSqrtPriceX96)) {
     const amountInputLimit = await getNumNoDecimal(para.token0Address, para.amountInputLimitDecimal);
-    await movePriceUp(swapRouter, tester, para.token0Address, para.token1Address, destSqrtPriceX96, amountInputLimit);
+    await movePriceUp(swapRouter, tester, para.token0Address, para.token1Address, para.fee, destSqrtPriceX96, amountInputLimit);
   } else {
     const amountInputLimit = await getNumNoDecimal(para.token1Address, para.amountInputLimitDecimal);
-    await movePriceDown(swapRouter, tester, para.token0Address, para.token1Address, destSqrtPriceX96, amountInputLimit);
+    await movePriceDown(swapRouter, tester, para.token0Address, para.token1Address, para.fee, destSqrtPriceX96, amountInputLimit);
   }
   
 }

@@ -1,6 +1,7 @@
 const hardhat = require("hardhat");
 const { modules } = require("web3");
 const contracts = require("../deployed.js");
+const { getWeb3 } = require("../libraries/getWeb3")
 const factoryJson = require(contracts.factoryJson);
 
 const poolJson = require(contracts.poolJson);
@@ -26,16 +27,17 @@ async function main() {
 
   const [deployer] = await hardhat.ethers.getSigners();
 
-  const factoryContract = await hardhat.ethers.getContractFactory(factoryJson.abi, factoryJson.bytecode, deployer);
-  const factory = await factoryContract.attach(factoryAddress);
-  
+  const web3 = getWeb3();
+
+  const factory = new web3.eth.Contract(factoryJson.abi, factoryAddress);
+
   //get the info of pool
-  let poolAddr = await factory.getPool(para.token0Address, para.token1Address, para.fee);
+  let poolAddr = await factory.methods.getPool(para.token0Address, para.token1Address, para.fee).call();
   console.log('Pool: ', poolAddr);
 
-  const poolContract = await hardhat.ethers.getContractFactory(poolJson.abi, poolJson.bytecode, deployer);
-  const pool = await poolContract.attach(poolAddr);
-  let slot0 = await pool.slot0();
+  const pool = new web3.eth.Contract(poolJson.abi, poolAddr);
+
+  let slot0 = await pool.methods.slot0().call();
 
   console.log(slot0);
   
