@@ -25,6 +25,14 @@ module.exports = {
       url: 'https://arb1.arbitrum.io/rpc',
       accounts: [sk]
     },
+    polygon: {
+      url: 'https://rpc-mainnet.maticvigil.com',
+      accounts: [sk]
+    },
+    mumbai: {
+      url: 'https://matic-testnet-archive-rpc.bwarelabs.com',
+      accounts: [sk]
+    },
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       gas: 10000000,

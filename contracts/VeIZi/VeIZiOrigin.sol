@@ -12,7 +12,7 @@ interface SmartWalletChecker {
     function check(address addr) external returns(bool);
 }
 
-contract IZiVE is Ownable, Multicall, ReentrancyGuard {
+contract VeIZiOrigin is Ownable, Multicall, ReentrancyGuard {
     using SafeERC20 for IERC20;
     
     struct Point {
@@ -118,7 +118,7 @@ contract IZiVE is Ownable, Multicall, ReentrancyGuard {
         uint256 lastCheckPoint = lastPoint.ts;
 
         Point memory initialLastPoint = lastPoint;
-        uint256 blockSlope = 0;
+        uint256 blockSlope = 0x0;
 
         if (block.timestamp > lastPoint.ts) {
             blockSlope = MULTIPLIER * (block.number - lastPoint.blk) / (block.timestamp - lastPoint.ts);
