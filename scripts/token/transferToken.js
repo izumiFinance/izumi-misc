@@ -8,12 +8,13 @@ const net = process.env.HARDHAT_NETWORK
 
 const managerAddress = contracts[net].nftManager;
 
-// Example: HARDHAT_NETWORK='izumiTest' node approveToken.js 'iZiT' '0xdBA594608D9941D4072F27C99B3E69565b6893Bf'
+// Example: HARDHAT_NETWORK='izumiTest' node transferToken.js 'YIN' '0xD4D6F030520649c7375c492D37ceb56571f768D0' 67
 
 const para = {
     token0Symbol: v[2],
     token0Address: contracts[net][v[2]],
-    approveAddress: v[3],
+    toAddress: v[3],
+    amount: v[4],
 }
 
 
@@ -25,18 +26,13 @@ async function main() {
 
   //attach to manager
   const [deployer] = await ethers.getSigners();
-
-  console.log('deployer address: ', deployer.address);
       
   const tokenContract = await hre.ethers.getContractFactory("TestToken");
 
 
 
   const token0Contract = await tokenContract.attach(para.token0Address);
-  await token0Contract.approve(para.approveAddress, '1000000000000000000000000000000'); 
-  console.log("addr: " + deployer.address);
-  console.log("contract: ", para.approveAddress);
-  console.log("	" + await token0Contract.allowance(deployer.address, para.approveAddress));
+  await token0Contract.transfer(para.toAddress, para.amount);
   
 
 }

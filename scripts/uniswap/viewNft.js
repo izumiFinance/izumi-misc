@@ -35,6 +35,8 @@ async function main() {
     tokensOwed0, tokensOwed1
   ] = await positionsManager.positions(para.nftId);
 
+  console.log('liquidity: ', liquidity.toString());
+
   console.log('nonce: ', nonce);
   console.log('operator: ', operator);
   console.log('token0: ', token0);

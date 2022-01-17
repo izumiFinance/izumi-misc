@@ -67,16 +67,21 @@ function getCalling(airdrop, address, tokenAddress, amountNoDecimal) {
 }
 //mint uniswap v3 nft
 async function main() {
+
+    const [deployer] = await hardhat.ethers.getSigners();
     const airdropList = getAddressList(para.fpath);
 
-    var originSendAddrNum = 0;
+    var originSendAddrNum = 5;
 
     var airdropABI = getAirdropABI();
     var airdropAddr = contracts[net].AIRDROP;
     var airdrop = new web3.eth.Contract(airdropABI, airdropAddr);
 
+    console.log('airdrop abi: ', airdropABI);
+    console.log('airdrop addr: ', airdropAddr);
+
     var addrListLen = airdropList.length;
-    var addrDelta = 4;
+    var addrDelta = 10;
     var sendNumThisTime = 0;
     // var nonce = 26;
     for (var addrListStart = originSendAddrNum; addrListStart < addrListLen; addrListStart += addrDelta) {
@@ -89,29 +94,36 @@ async function main() {
         // console.log(address);
         var callings = [];
         var airdropSubList = airdropList.slice(addrListStart, addrListEnd);
-        // console.log('addr sub list:' , addrSubList);
+        console.log('addr sub list:' , airdropSubList);
         for (item of airdropSubList) {
             var address = item[0];
             var amountDecimal = item[1];
             var amountNoDecimal = BigNumber(amountDecimal).times(10**18).toFixed(0);
-
+            console.log('address: ', address);
+            console.log('amount no decimal: ', amountNoDecimal);
             var cs = getCalling(airdrop, address, para.tokenAddress, amountNoDecimal);
             callings.push(cs);
         }
         console.log('callings: ', callings);
 
-        const txData = await airdrop.methods.multicall(callings).encodeABI()
+        const txData = airdrop.methods.multicall(callings).encodeABI()
+        const gas = await airdrop.methods.multicall(callings).estimateGas({from: deployer.address});
+        // console.log('tx data: ', txData);
+        console.log('gas: ', gas);
+        const gasLimit = BigNumber(gas * 1.1).toFixed(0, 2);
+        console.log('gasLimit: ', gasLimit);
         const signedTx = await web3.eth.accounts.signTransaction(
             {
                 // nonce: nonce,
                 to: airdropAddr,
                 data:txData,
-                gas: 2000000,
-                gasPrice: 33000000000,
+                gas: gasLimit,
+                gasPrice: 75000000000,
             }, 
             pk
         );
         // nonce += 1;
+
         const tx = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('tx: ', tx);
 
