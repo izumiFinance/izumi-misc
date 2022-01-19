@@ -47,8 +47,8 @@ contract VeIZi is Ownable, Multicall, ReentrancyGuard, ERC721Enumerable {
     mapping(uint256 => LockedBalance) public nftLocked;
 
     uint256 public epoch;
-    Point[1000000000000000000] public pointHistory;
-    mapping(uint256 => Point[1000000000]) public nftPointHistory;
+    mapping(uint256 => Point) public pointHistory;
+    mapping(uint256 => mapping(uint256 => Point)) public nftPointHistory;
     mapping(uint256 => uint256) public nftPointEpoch;
 
     mapping(uint256 => int256) public slopeChanges;
