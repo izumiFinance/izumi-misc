@@ -1,6 +1,7 @@
 .secret.js
 cache/
 scripts/.DS_Store
+scripts/*/.DS_Store
 
 *.swp
 *.swc
