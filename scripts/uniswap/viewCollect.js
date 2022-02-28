@@ -47,6 +47,56 @@ async function main() {
     }).call({from: owner});
 
     console.log('ret: ', ret);
+
+    var position = await nftManager.methods.positions(para.nftId).call();
+    console.log('position: ', position);
+
+    const collectFee = nftManager.methods.collect({
+        tokenId: para.nftId,
+        recipient: owner,
+        amount0Max: '0xffffffffffffffffffffffffffffffff',
+        amount1Max: '0xffffffffffffffffffffffffffffffff'
+    }).encodeABI();
+
+    /*
+
+        uint256 tokenId;
+        uint128 liquidity;
+        uint256 amount0Min;
+        uint256 amount1Min;
+        uint256 deadline;
+    */
+    const decrease = nftManager.methods.decreaseLiquidity({
+        tokenId: para.nftId,
+        liquidity: position.liquidity,
+        amount0Min: '0',
+        amount1Min: '0',
+        deadline: '0xffffffff',
+    }).encodeABI();
+    const collectLiquidity = nftManager.methods.collect({
+        tokenId: para.nftId,
+        recipient: owner,
+        amount0Max: '0xffffffffffffffffffffffffffffffff',
+        amount1Max: '0xffffffffffffffffffffffffffffffff'
+    }).encodeABI();
+
+    const multicallRet = await nftManager.methods.multicall([collectFee, decrease, collectLiquidity]).call({from: owner});
+
+    const params = [{
+        type: 'uint256',
+        name: 'amount0'
+    }, {
+        type: 'uint256',
+        name: 'amount1'
+    }];
+    const collectFeeResult = web3.eth.abi.decodeParameters(params, multicallRet[0]);
+    const decreaseLiquidityResult = web3.eth.abi.decodeParameters(params, multicallRet[1]);
+    const collectLiquidityResult = web3.eth.abi.decodeParameters(params, multicallRet[2]);
+
+    console.log('collect fee result: ', collectFeeResult);
+    console.log('decrease liquidity result: ', decreaseLiquidityResult);
+    console.log('collect liquidity result: ', collectLiquidityResult);
+
 }
 
 
