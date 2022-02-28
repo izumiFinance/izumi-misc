@@ -91,8 +91,10 @@ async function movePriceDown(uniSwapRouter, trader, tokenXAddr, tokenYAddr, fee,
     },{value: amountInputLimit});
 
     var tx1 = await uniSwapRouter.connect(trader).unwrapWETH9('0', trader.address);
+    var tx2 = await uniSwapRouter.connect(trader).refundETH();
     console.log('tx0: ', tx0);
     console.log('tx1: ', tx1);
+    console.log('tx2: ', tx2);
   }
 
 }
@@ -127,8 +129,10 @@ async function movePriceUp(uniSwapRouter, trader, tokenXAddr, tokenYAddr, fee, d
     },{value: amountInputLimit});
 
     var tx1 = await uniSwapRouter.connect(trader).unwrapWETH9('0', trader.address);
+    var tx2 = await uniSwapRouter.connect(trader).refundETH();
     console.log('tx0: ', tx0);
     console.log('tx1: ', tx1);
+    console.log('tx2: ', tx2);
   }
 
 }
@@ -208,10 +212,11 @@ async function main() {
   await approve(await attachToken(para.token1Address), tester, swapRouterAddress, "1000000000000000000000000000000");
 
   if (BigNumber(destSqrtPriceX96).gt(currentSqrtPriceX96)) {
-    const amountInputLimit = await getNumNoDecimal(para.token0Address, para.amountInputLimitDecimal);
+    const amountInputLimit = await getNumNoDecimal(para.token1Address, para.amountInputLimitDecimal);
     await movePriceUp(swapRouter, tester, para.token0Address, para.token1Address, para.fee, destSqrtPriceX96, amountInputLimit);
   } else {
-    const amountInputLimit = await getNumNoDecimal(para.token1Address, para.amountInputLimitDecimal);
+    const amountInputLimit = await getNumNoDecimal(para.token0Address, para.amountInputLimitDecimal);
+    console.log('amount input limit: ', amountInputLimit);
     await movePriceDown(swapRouter, tester, para.token0Address, para.token1Address, para.fee, destSqrtPriceX96, amountInputLimit);
   }
   
