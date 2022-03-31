@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
+require('hardhat-contract-sizer');
 
 const secret = require('./.secret.js');
 
@@ -12,7 +13,20 @@ const izumiRpcUrl = "http://47.241.103.6:9545";
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+
+    compilers: [
+      {
+        version: "0.8.4",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000
+          }
+        }
+      },
+    ]
+  },
 
   networks: {
     izumiTest: {
@@ -45,6 +59,12 @@ module.exports = {
       gasPrice: 45000000000,
       accounts: [sk]
     },
+    bsc: {
+      url: "https://bsc-dataseed.binance.org/",
+      gas: 800000,
+      gasPrice: 5000000000,
+      accounts: [sk]
+    }
   },
   etherscan: {
     apiKey: apiKey
