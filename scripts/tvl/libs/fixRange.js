@@ -14,7 +14,10 @@ async function _getPoolTick(web3, poolAddr) {
 async function _getMiningContractInfo(web3, miningAddress) {
     var mining = new web3.eth.Contract(fixRangeABI, miningAddress);
     var result = await mining.methods.getMiningContractInfo().call();
-    var totalVLiquidity = Number(result.totalVLiquidity_.toString());
+    var tickDiff = result.rewardUpperTick_ - result.rewardLowerTick_;
+    console.log('tickdiff: ', tickDiff);
+    var totalVLiquidity = Number(result.totalVLiquidity_.toString()) / tickDiff / tickDiff;
+    console.log(totalVLiquidity * 1e6);
 
     var totalNIZI = await mining.methods.totalNIZI().call();
     totalNIZI = Number(totalNIZI.toString());

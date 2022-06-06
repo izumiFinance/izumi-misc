@@ -64,7 +64,13 @@ module.exports = {
       gas: 800000,
       gasPrice: 5000000000,
       accounts: [sk]
-    }
+    },
+    bscTest: {
+      url: 'https://data-seed-prebsc-2-s2.binance.org:8545/',
+      accounts: [sk],
+      // gas: 90000000,
+      gasPrice: 10000000000,
+    },
   },
   etherscan: {
     apiKey: apiKey
