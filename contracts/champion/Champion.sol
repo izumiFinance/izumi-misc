@@ -36,7 +36,7 @@ contract Champion is Ownable, Multicall, ReentrancyGuard {
                 amountMap[account[i]][token[i]] = _amount;
             }else{
                 uint _amount = amountMap[account[i]][token[i]];
-                _amount = (_amount - amount[i]) > 0 ? (_amount - amount[i]) : 0;
+                _amount = _amount > amount[i] ? (_amount - amount[i]) : 0;
                 amountMap[account[i]][token[i]] = _amount;
             }
             
