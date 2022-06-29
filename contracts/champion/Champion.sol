@@ -50,8 +50,11 @@ contract Champion is Ownable, Multicall, ReentrancyGuard {
     function claim(address token, uint maxAmount) public nonReentrant{
         address provider = tokenProviders[token];
         require(provider != address(0), "No Provider");
-        uint amount = maxAmount < amountMap[msg.sender][token] ? maxAmount : amountMap[msg.sender][token];
+        uint _amount = amountMap[msg.sender][token];
+        uint amount = maxAmount < _amount ? maxAmount : _amount;
         IERC20(token).safeTransferFrom(provider, msg.sender, amount);
+        _amount = _amount - amount;
+        amountMap[msg.sender][token] = _amount;
         emit _claim(token, amount, msg.sender);
     }
 
