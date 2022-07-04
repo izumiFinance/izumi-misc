@@ -1,7 +1,7 @@
 //  SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-contract Multicall {
+contract MultiContractCall {
     function multicall(address[] calldata contracts, bytes[] calldata data) external payable returns (bool[] memory successes, bytes[] memory results) {
         successes = new bool[](data.length);
         results = new bytes[](data.length);

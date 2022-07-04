@@ -6,7 +6,7 @@ const hardhat = require("hardhat");
 
 async function main() {
     
-    const factory = await hardhat.ethers.getContractFactory("Multicall");
+    const factory = await hardhat.ethers.getContractFactory("MultiContractCall");
   
     console.log("Deploying .....")
     const multicall = await factory.deploy();
