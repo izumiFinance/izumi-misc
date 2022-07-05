@@ -15,21 +15,27 @@ const rpc = config.networks[net].url
 
 var web3 = new Web3(new Web3.providers.HttpProvider(rpc));
 
-// Example: HARDHAT_NETWORK='izumiTest' node airdropSingleToken.js ${PATH_TO_AIRDROP_ADDR_LIST} IZITEST 18
+// Example: HARDHAT_NETWORK='izumiTest' node airdropSingleToken.js ${PATH_TO_AIRDROP_ADDR_LIST} IZITEST 18 10
 
 const para = {
     fpath: v[2],
     tokenSymbol: v[3],
     tokenAddress: contracts[net][v[3]],
     decimal: v[4],
+    commonAmountDecimal: v[5],
 }
 function getAddressList(path) {
     const fs = require('fs');
     let rawdata = fs.readFileSync(path);
     let data = rawdata.toString().split('\n');
-    data = data.map((r)=> {return r.split(' ')});
-    // console.log(data);
-    return data;
+    const address = [];
+    for (const addr of data) {
+        if (addr === '') {
+            continue;
+        }
+        address.push(addr);
+    }
+    return address;
 }
 
 function getContractJson(path) {
@@ -86,9 +92,9 @@ async function main() {
     // return;
 
     var addrListLen = airdropList.length;
-    var addrDelta = 30;
+    var addrDelta = 200;
     var sendNumThisTime = 0;
-    var nonce = 42;
+    // var nonce = 42;
     for (var addrListStart = originSendAddrNum; addrListStart < addrListLen; addrListStart += addrDelta) {
 
         var t1 = new Date().getTime();
@@ -100,12 +106,10 @@ async function main() {
         var callings = [];
         var airdropSubList = airdropList.slice(addrListStart, addrListEnd);
         console.log('addr sub list:' , airdropSubList);
-        for (item of airdropSubList) {
-            var address = item[0];
-            var amountDecimal = item[1];
-            var amountNoDecimal = BigNumber(amountDecimal).times(10**para.decimal).toFixed(0, 3);
+        for (const address of airdropSubList) {
+            var amountNoDecimal = BigNumber(para.commonAmountDecimal).times(10**para.decimal).toFixed(0, 3);
             console.log('address: ', address);
-            console.log('amount decimal: ', amountDecimal);
+            console.log('amount decimal: ', para.commonAmountDecimal);
             console.log('amount no decimal: ', amountNoDecimal);
             var cs = getCalling(airdrop, address, para.tokenAddress, amountNoDecimal);
             callings.push(cs);
@@ -120,15 +124,15 @@ async function main() {
         console.log('gasLimit: ', gasLimit);
         const signedTx = await web3.eth.accounts.signTransaction(
             {
-                nonce: nonce,
+                // nonce: nonce,
                 to: airdropAddr,
                 data:txData,
                 gas: gasLimit,
-                gasPrice: 31000000000,
+                gasPrice: 19000000000,
             }, 
             pk
         );
-        nonce += 1;
+        // nonce += 1;
 
         const tx = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('tx: ', tx);

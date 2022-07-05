@@ -70,6 +70,8 @@ async function main() {
   var token0 = new web3.eth.Contract(testTokenABI, para.token0Address);
   var token1 = new web3.eth.Contract(testTokenABI, para.token1Address);
 
+  console.log('aaaaaaaaaaaa');
+
   var decimal0 = await token0.methods.decimals().call();
   console.log('decimal0: ', decimal0);
   var decimal1 = await token1.methods.decimals().call();

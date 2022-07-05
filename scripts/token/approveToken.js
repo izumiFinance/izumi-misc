@@ -30,13 +30,12 @@ async function main() {
       
   const tokenContract = await hre.ethers.getContractFactory("TestToken");
 
-
-
   const token0Contract = await tokenContract.attach(para.token0Address);
-  await token0Contract.approve(para.approveAddress, '1000000000000000000000000000000'); 
+  await token0Contract.approve(para.approveAddress.toLowerCase(), '1000000000000000000000000000000'); 
   console.log("addr: " + deployer.address);
   console.log("contract: ", para.approveAddress);
   console.log("	" + await token0Contract.allowance(deployer.address, para.approveAddress));
+  console.log(' ' + await token0Contract.balanceOf(deployer.address));
   
 
 }

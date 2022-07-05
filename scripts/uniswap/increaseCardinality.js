@@ -24,7 +24,7 @@ const rpc = config.networks[net].url
 const factoryAddress = contracts[net].factory;
 var web3 = new Web3(new Web3.providers.HttpProvider(rpc));
 
-//Example: HARDHAT_NETWORK='izumiTest' node increaseCardinality.js iZi WETH9 3000 10
+//Example: HARDHAT_NETWORK='izumiTest' node increaseCardinality.js iZi WETH9 3000 20
 
 const para = {
     token0Symbol: v[2],
@@ -60,6 +60,7 @@ async function main() {
           to: poolAddr,
           data:txData,
           gas: BigNumber(gasLimit * 1.1).toFixed(0, 2),
+          gasPrice: 18000000000,
       }, 
       pk
   );

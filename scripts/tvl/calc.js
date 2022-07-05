@@ -17,6 +17,8 @@ function getWorth(net, tokenAmountList) {
         var price = priceMap[symbol];
 
         var amountDecimal = amount / (10 ** decimal);
+
+        console.log(symbol, ' ', amountDecimal);
         worth += price * amountDecimal;
     }
     return worth;
@@ -72,6 +74,7 @@ async function getMaxAPRFromOneNet(net) {
         var capitalWorth = getWorth(net, capitalTokenAmountList);
         var rewardWorth = getWorth(net, rewardTokenAmountList);
         var apr = (capitalWorth > 0) ? rewardWorth / capitalWorth : 0;
+        console.log('apr: ', apr);
         if (apr > maxAPR) {
             maxAPR = apr;
         }
@@ -92,16 +95,18 @@ async function getMaxAPRFromOneNet(net) {
 }
 
 async function getTVL() {
-    // var ethTVL = await getTVLFromOneNet('ethereum');
-    var ethTVL = 0;
-    var izumiTVL = await getTVLFromOneNet('izumiTest');
+    var ethTVL = await getTVLFromOneNet('ethereum');
+    // var ethTVL = 0;
+    // var izumiTVL = await getTVLFromOneNet('izumiTest');
+    var izumiTVL = 0;
     var tvl = ethTVL + izumiTVL;
     return tvl;
 }
 
 async function getMaxAPR() {
     var ethAPR = await getMaxAPRFromOneNet('ethereum');
-    var izumiAPR = await getMaxAPRFromOneNet('izumiTest');
+    // var izumiAPR = await getMaxAPRFromOneNet('izumiTest');
+    var izumiAPR = 0;
     var apr = Math.max(ethAPR, izumiAPR);
     return apr;
 }

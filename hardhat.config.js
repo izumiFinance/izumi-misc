@@ -66,10 +66,15 @@ module.exports = {
       accounts: [sk]
     },
     bscTest: {
-      url: "https://data-seed-prebsc-2-s2.binance.org:8545/",
-      gas: 800000,
-      gasPrice: 15000000000,
-      accounts: [sk]
+      url: 'https://data-seed-prebsc-2-s2.binance.org:8545/',
+      accounts: [sk],
+      // gas: 90000000,
+      gasPrice: 10000000000,
+    },
+    goerli: {
+      url: 'https://goerli.infura.io/v3/',
+      accounts: [sk],
+      gasPrice: 10000000000,
     }
   },
   etherscan: {

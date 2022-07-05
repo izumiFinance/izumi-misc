@@ -16,12 +16,10 @@ const rpc = config.networks[net].url
 console.log('rpc: ', rpc);
 var web3 = new Web3(new Web3.providers.HttpProvider(rpc));
 
-// Example: HARDHAT_NETWORK='izumiTest' node setAirdropProvider.js 'IZITEST' '0x7576BCf2700A86e8785Cfb1f9c2FF402941C9789'
+// Example: HARDHAT_NETWORK='izumiTest' node setAirdropProvider.js [new owner]
 
 const para = {
-    token0Symbol: v[2],
-    token0Address: contracts[net][v[2]],
-    provider: v[3],
+    newOwner:v[2]
 }
 
 function getContractJson(path) {
@@ -50,13 +48,13 @@ async function main() {
   var airdropAddr = contracts[net].AIRDROP;
   var airdrop = new web3.eth.Contract(airdropABI, airdropAddr);
 
-  var setProviderTxData = airdrop.methods.setProvider(para.token0Address, para.provider).encodeABI();
+  var setProviderTxData = airdrop.methods.transferOwnership(para.newOwner).encodeABI();
   var signedSetProviderTxData = await web3.eth.accounts.signTransaction(
     {
-        gasPrice: 150000000000,
+        gasPrice: 5000000000,
         to: airdropAddr,
         data:setProviderTxData,
-        gas: 800000,
+        gas: 35000,
     }, 
     pk
   );
