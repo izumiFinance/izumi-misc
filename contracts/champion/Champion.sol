@@ -11,12 +11,30 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract Champion is Ownable, Multicall, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    mapping(address => mapping(address => uint)) public amountMap;
+    mapping(address => bool) public trusted;
     mapping(address => address) public tokenProviders;
-    
-    event _claim(address token, uint amount, address account);
+    mapping(address => mapping(address => uint)) public amountMap;
 
-    function setUserBalance(address[] memory account, address[] memory token, uint[] memory amount) public onlyOwner{
+    modifier onlyTrusted{
+        require(trusted[msg.sender] || msg.sender == owner(), "not trusted");
+        _;
+    }
+    
+    event Claim(address token, uint amount, address account);
+
+    function addTrusted(address user) public onlyOwner{
+        trusted[user] = true;
+    }
+
+    function removeTrusted(address user) public onlyOwner{
+        trusted[user] = false;
+    }
+
+    function isTrusted(address user) public view returns(bool){
+        return (trusted[user] || user == owner());
+    }
+
+    function setUserBalance(address[] memory account, address[] memory token, uint[] memory amount) public onlyTrusted{
         require((account.length == token.length) && (token.length == amount.length), "PARAMS_LENGTH_NOT_MATCH");
         for(uint256 i = 0; i < amount.length; i++) {
             require(account[i] != address(0), "ACCOUNT_INVALID");
@@ -25,7 +43,7 @@ contract Champion is Ownable, Multicall, ReentrancyGuard {
         }
     }
 
-    function modityUserBalance(address[] memory account, address[] memory token, uint[] memory amount, bool[] memory isAdd) public onlyOwner{
+    function modityUserBalance(address[] memory account, address[] memory token, uint[] memory amount, bool[] memory isAdd) public onlyTrusted{
         require((account.length == token.length) && (token.length == amount.length) && (amount.length == isAdd.length), "PARAMS_LENGTH_NOT_MATCH");
         for(uint256 i = 0; i < amount.length; i++) {
             require(account[i] != address(0), "ACCOUNT_INVALID");
@@ -43,7 +61,7 @@ contract Champion is Ownable, Multicall, ReentrancyGuard {
         }
     }
 
-    function setProvider(address token, address provider) public onlyOwner {
+    function setProvider(address token, address provider) public onlyTrusted{
         tokenProviders[token] = provider;
     }
 
@@ -55,7 +73,7 @@ contract Champion is Ownable, Multicall, ReentrancyGuard {
         IERC20(token).safeTransferFrom(provider, msg.sender, amount);
         _amount = _amount - amount;
         amountMap[msg.sender][token] = _amount;
-        emit _claim(token, amount, msg.sender);
+        emit Claim(token, amount, msg.sender);
     }
 
     function balance(address account, address token) public view returns(uint) {
