@@ -24,6 +24,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.1",
     "bignumber.js": "^9.0.2",
+    "hardhat-contract-sizer": "^2.5.1",
     "web3": "^1.6.1"
   }
 }
