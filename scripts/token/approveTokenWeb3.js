@@ -111,7 +111,7 @@ async function main() {
           to: para.tokenAddress,
           data:txData,
           gas: BigNumber(gasLimit * 1.1).toFixed(0, 2),
-          gasPrice: 5000000000,
+          gasPrice: 35000000000,
       }, 
       pk
   );
