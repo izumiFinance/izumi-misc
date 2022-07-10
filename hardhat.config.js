@@ -72,7 +72,7 @@ module.exports = {
       gasPrice: 10000000000,
     },
     goerli: {
-      url: 'https://goerli.infura.io/v3/',
+      url: 'https://goerli.prylabs.net',
       accounts: [sk],
       gasPrice: 10000000000,
     }
