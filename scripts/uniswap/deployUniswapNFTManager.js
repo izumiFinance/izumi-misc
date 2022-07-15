@@ -21,7 +21,7 @@ async function main() {
   
     await manager.deployed();
 
-    console.log("factory Deployed Address:", factory.address);
+    console.log("manager Deployed Address:", manager.address);
   
 }
 
