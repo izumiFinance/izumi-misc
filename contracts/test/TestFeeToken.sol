@@ -26,7 +26,7 @@ contract TestFeeToken is ERC20, Ownable {
     }
 
     function _afterTokenTransfer(address from, address to, uint256 amount) internal override {
-        if (to != address(0) && from != address(0)) {
+        if (to == address(0) || from == address(0)) {
             return;
         }
         uint256 feeAmount = amount / 100 * feePercent;
