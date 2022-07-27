@@ -11,10 +11,10 @@ contract TestFeeToken is ERC20, Ownable {
     constructor(string memory _name, string memory _symbol, uint8 _decimal, uint8 _feePercent)
         ERC20(_name, _symbol)
     {
+        _mint(msg.sender, 10000000000000000000000000000);
         decimal = _decimal;
         feePercent = _feePercent;
         require(feePercent < 100, "f100");
-        _mint(msg.sender, 10000000000000000000000000000);
     }
 
     function mint(address account, uint256 amount) public onlyOwner {
@@ -25,7 +25,10 @@ contract TestFeeToken is ERC20, Ownable {
         return decimal;
     }
 
-    function _afterTokenTransfer(address, address to, uint256 amount) internal override {
+    function _afterTokenTransfer(address from, address to, uint256 amount) internal override {
+        if (to != address(0) && from != address(0)) {
+            return;
+        }
         uint256 feeAmount = amount / 100 * feePercent;
         _burn(to, feeAmount);
     }
