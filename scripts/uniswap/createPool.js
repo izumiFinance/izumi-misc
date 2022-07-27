@@ -88,7 +88,7 @@ async function main() {
   var priceToken0By1SqrtX96 = priceToken0By1Sqrt.times(BigNumber(2).pow(96)).toFixed(0);
 
   console.log('priceSqrtX96: ', priceToken0By1SqrtX96);
-
+  console.log('abi: ', managerJson.abi)
   const manager = new web3.eth.Contract(managerJson.abi, managerAddress);
 
   //Check whether attach successfully
