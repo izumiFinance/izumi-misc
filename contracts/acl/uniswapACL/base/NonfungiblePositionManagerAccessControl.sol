@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.4;
 
-import "../../interfaces/uniswap/INonfungiblePositionManager.sol";
+import "../../../interfaces/uniswap/INonfungiblePositionManager.sol";
 
 
 contract NonfungiblePositionManagerAccessControl {
