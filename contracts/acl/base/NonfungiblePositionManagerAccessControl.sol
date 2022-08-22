@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../../interfaces/uniswap/INonfungiblePositionManager.sol";
 
 
-contract UniNFT {
+contract NonfungiblePositionManagerAccessControl {
 
     address public safeModule;
     address public safeAddress;
@@ -74,81 +74,14 @@ contract UniNFT {
     function increaseLiquidity(INonfungiblePositionManager.IncreaseLiquidityParams calldata params) external view onlySelf {
 
         require(INonfungiblePositionManager(uniV3NFTManager).ownerOf(params.tokenId) == safeAddress, "nft owner must be safe address");
-        // INonfungiblePositionManager.Position memory position;
-
-        // (
-        //     ,
-        //     ,
-        //     position.token0,
-        //     position.token1,
-        //     position.fee,
-        //     position.tickLower,
-        //     position.tickUpper,
-        //     position.liquidity,
-        //     ,
-        //     ,
-        //     position.tokensOwed0,
-        //     position.tokensOwed1
-        // ) = INonfungiblePositionManager(uniV3NFTManager).positions(params.tokenId);
-
-        // require(position.token0 == token0, "token0 must be weth or usdc");
-        // require(position.token1 == token1, "token1 must be weth or usdc");
-
-        // // todo: we may commit following require comment
-        // require(position.fee == 3000, "fee must be 0.3%");
     }
 
     function decreaseLiquidity(INonfungiblePositionManager.DecreaseLiquidityParams calldata params) external view onlySelf {
 
-        // INonfungiblePositionManager.Position memory position;
-
-        // (
-        //     ,
-        //     ,
-        //     position.token0,
-        //     position.token1,
-        //     position.fee,
-        //     position.tickLower,
-        //     position.tickUpper,
-        //     position.liquidity,
-        //     ,
-        //     ,
-        //     position.tokensOwed0,
-        //     position.tokensOwed1
-        // ) = INonfungiblePositionManager(uniV3NFTManager).positions(params.tokenId);
-
-        // require(position.token0 == token0, "token0 must be weth or usdc");
-        // require(position.token1 == token1, "token1 must be weth or usdc");
-
-        // // todo: we may commit following require comment
-        // require(position.fee == 3000, "fee must be 0.3%");
     }
 
     function collect(INonfungiblePositionManager.CollectParams calldata params) external view onlySelf {
         require(params.recipient == safeAddress, "recipient must be safe address");
-
-        // INonfungiblePositionManager.Position memory position;
-
-        // (
-        //     ,
-        //     ,
-        //     position.token0,
-        //     position.token1,
-        //     position.fee,
-        //     position.tickLower,
-        //     position.tickUpper,
-        //     position.liquidity,
-        //     ,
-        //     ,
-        //     position.tokensOwed0,
-        //     position.tokensOwed1
-        // ) = INonfungiblePositionManager(uniV3NFTManager).positions(params.tokenId);
-
-        // require(position.token0 == token0, "token0 must be weth or usdc");
-        // require(position.token1 == token1, "token1 must be weth or usdc");
-
-        // // todo: we may commit following require comment
-        // require(position.fee == 3000, "fee must be 0.3%");
     }
 
 
@@ -158,7 +91,7 @@ contract UniNFT {
         address recipient
     ) external view onlySelf {
 
-        require(recipient == safeAddress, "recipient must be lp address");
+        require(recipient == safeAddress, "recipient must be safe address");
         require(token == weth || token == usdc, "token must be weth or usdc");
     }
 

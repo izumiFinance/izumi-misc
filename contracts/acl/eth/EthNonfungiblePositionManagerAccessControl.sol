@@ -2,15 +2,15 @@
 
 pragma solidity ^0.8.4;
 
-import "../base/UniNFT.sol";
+import "../base/NonfungiblePositionManagerAccessControl.sol";
 
 
-contract EthUniNFT is UniNFT {
+contract EthNonfungiblePositionManagerAccessControl is NonfungiblePositionManagerAccessControl {
 
     constructor(
         address _safeAddress,
         address _safeModule
-    ) UniNFT(
+    ) NonfungiblePositionManagerAccessControl(
         _safeAddress, 
         _safeModule,
         0xC36442b4a4522E871399CD717aBDD847Ab11FE88, // nft address

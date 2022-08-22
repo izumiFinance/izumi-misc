@@ -2,19 +2,19 @@
 
 pragma solidity ^0.8.4;
 
-import "../base/UniSwapRouter.sol";
+import "../base/SwapRouterAccessControl.sol";
 
 
-contract EthUniSwapRouter is UniSwapRouter {
+contract EthSwapRouterAccessControl is SwapRouterAccessControl {
 
 
     constructor(
         address _safeAddress,
         address _safeModule
-    ) UniSwapRouter(
+    ) SwapRouterAccessControl(
         _safeAddress, 
         _safeModule,
-        0xC36442b4a4522E871399CD717aBDD847Ab11FE88, // nft address
+        0xE592427A0AEce92De3Edee1F18E0157C05861564, // swap router address
         0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, // usdc address
         0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2  // weth address
     ) {}

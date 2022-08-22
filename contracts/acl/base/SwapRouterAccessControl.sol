@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../../interfaces/uniswap/ISwapRouter.sol";
 
 
-contract UniSwapRouter {
+contract SwapRouterAccessControl {
 
     /// @dev The length of the bytes encoded address
     uint256 private constant ADDR_SIZE = 20;
@@ -17,8 +17,8 @@ contract UniSwapRouter {
     /// @dev The offset of an encoded pool key
     uint256 private constant ONE_POOL_LENGTH = NEXT_OFFSET + ADDR_SIZE;
 
+    address public safeAddress;
     address public safeModule;
-    address public lpAddress;
     address public uniSwapRouter;
     address public usdc;
     address public weth;
@@ -31,14 +31,16 @@ contract UniSwapRouter {
     uint256 internal _checkedValue;
 
     constructor(
+        address _safeAddress,
         address _safeModule, 
-        address _lpAddress,
         address _uniSwapRouter,
         address _usdc,
         address _weth
     ) {
+        require(_safeAddress != address(0), "invalid safe address");
+        require(_safeModule!= address(0), "invalid module address");
         safeModule = _safeModule;
-        lpAddress = _lpAddress;
+        safeAddress = _safeAddress;
         uniSwapRouter = _uniSwapRouter;
         usdc = _usdc;
         weth = _weth;
@@ -75,7 +77,7 @@ contract UniSwapRouter {
         bool usdc2weth = (params.tokenIn == usdc) && (params.tokenOut == weth);
         bool weth2usdc = (params.tokenIn == weth) && (params.tokenOut == usdc);
         require(usdc2weth || weth2usdc, "only weth2usdc or usdc2weth");
-        require(params.recipient == lpAddress, "recipient must be lp address");
+        require(params.recipient == safeAddress, "recipient must be safe address");
 
         // todo: we may commit following require comment
         require(params.fee == 3000, "fee must be 0.3%");
@@ -115,7 +117,7 @@ contract UniSwapRouter {
         bool usdc2weth = (tokenA == usdc) && (tokenB == weth);
         bool weth2usdc = (tokenB == weth) && (tokenA == usdc);
         require(usdc2weth || weth2usdc, "only weth2usdc or usdc2weth");
-        require(params.recipient == lpAddress, "recipient must be lp address");
+        require(params.recipient == safeAddress, "recipient must be safe address");
 
         // todo: we may commit following require comment
         require(fee == 3000, "fee must be 0.3%");
@@ -126,7 +128,7 @@ contract UniSwapRouter {
         bool usdc2weth = (params.tokenIn == usdc) && (params.tokenOut == weth);
         bool weth2usdc = (params.tokenIn == weth) && (params.tokenOut == usdc);
         require (usdc2weth || weth2usdc, "only weth2usdc or usdc2weth");
-        require(params.recipient == lpAddress, "recipient must be lp address");
+        require(params.recipient == safeAddress, "recipient must be safe address");
 
         // todo: we may commit following require comment
         require(params.fee == 3000, "fee must be 0.3%");
@@ -143,7 +145,7 @@ contract UniSwapRouter {
         bool usdc2weth = (tokenA == usdc) && (tokenB == weth);
         bool weth2usdc = (tokenB == weth) && (tokenA == usdc);
         require(usdc2weth || weth2usdc, "only weth2usdc or usdc2weth");
-        require(params.recipient == lpAddress, "recipient must be lp address");
+        require(params.recipient == safeAddress, "recipient must be safe address");
 
         // todo: we may commit following require comment
         require(fee == 3000, "fee must be 0.3%");
