@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 
 import "../../interfaces/iZiSwap/ILiquidityManager.sol";
 
-contract BscLiquidityManagerAccessControl {
+contract LiquidityManagerAccessControlFree {
 
     address public safeModule;
     address public safeAddress;
@@ -49,12 +49,8 @@ contract BscLiquidityManagerAccessControl {
     fallback() external {
         revert("Unauthorized access");
     }
-    function mint(ILiquidityManager.MintParam calldata params) external view onlySelf {
-        require(tokenWhiteList[params.tokenX], "tokenX is not allowed");
-        require(tokenWhiteList[params.tokenY], "tokenY is not allowed");
-        require(params.miner == safeAddress, "recipient(miner) must be safe address");
 
-    }
+    function mint(ILiquidityManager.MintParam calldata params) external view onlySelf {}
 
     function decLiquidity(
         uint256 lid,
@@ -73,23 +69,16 @@ contract BscLiquidityManagerAccessControl {
         uint256 lid,
         uint128 amountXLim,
         uint128 amountYLim
-    ) external view onlySelf {
-        require(recipient == safeAddress, "Recipient is not allowed");
-    }
+    ) external view onlySelf {}
 
 
-    function unwrapWETH9(uint256 minAmount, address recipient) external view onlySelf {
-        require(recipient == safeAddress, "recipient must be safe address");
-    }
+    function unwrapWETH9(uint256 minAmount, address recipient) external view onlySelf {}
 
     function sweepToken(
         address token,
         uint256 minAmount,
         address recipient
-    ) external view onlySelf {
-        require(recipient == safeAddress, "recipient must be safe address");
-        require(tokenWhiteList[token], "token is not allowed");
-    }
+    ) external view onlySelf {}
 
     function refundETH() external view onlySelf {}
 

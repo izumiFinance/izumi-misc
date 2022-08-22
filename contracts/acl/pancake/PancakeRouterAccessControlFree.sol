@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 
 import "../../interfaces/iZiSwap/ISwap.sol";
 
-contract BscPancakeAccessControl {
+contract PancakeRouterAccessControlFree {
 
     address public safeModule;
     address public safeAddress;
@@ -50,21 +50,9 @@ contract BscPancakeAccessControl {
         revert("Unauthorized access");
     }
 
-    function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to, uint256 deadline) external view onlySelf {
-        // use 'require' to check the access
-        require(path.length == 2, "Invalid Path");
-        require(tokenWhiteList[path[0]], "Token is not allowed");
-        require(tokenWhiteList[path[path.length - 1]], "Token is not allowed");
-        require(to == safeAddress, "To address is not allowed");
-    }
+    function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to, uint256 deadline) external view onlySelf {}
 
 
-    function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] calldata path, address to, uint256 deadline) external view onlySelf {
-        // use 'require' to check the access
-        require(path.length == 2, "Invalid Path");
-        require(tokenWhiteList[path[0]], "Token is not allowed");
-        require(tokenWhiteList[path[path.length - 1]], "Token is not allowed");
-        require(to == safeAddress, "To address is not allowed");
-    }
+    function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] calldata path, address to, uint256 deadline) external view onlySelf {}
         
 }
