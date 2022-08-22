@@ -17,11 +17,12 @@ async function main() {
       coboSafeAddress,
       coboSafeModule
     ]
+    console.log('args: ', args)
   
     console.log("Deploying .....")
-    const nftACL = await nftACL.deploy(...args);
-    await nftACL.deployed();
-    console.log("nftACL address: " , nftACL.address);
+    const acl = await nftACL.deploy(...args);
+    await acl.deployed();
+    console.log("nftACL address: " , acl.address);
   
   }
   
