@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../base/SwapRouterAccessControl.sol";
 
 
-contract EthSwapRouterAccessControl is SwapRouterAccessControl {
+contract ArbitrumSwapRouterAccessControl is SwapRouterAccessControl {
 
     constructor(
         address _safeAddress,
