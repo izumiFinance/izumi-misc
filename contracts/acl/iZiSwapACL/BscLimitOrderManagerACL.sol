@@ -3,7 +3,7 @@ pragma solidity ^0.8.4;
 
 import "../../interfaces/iZiSwap/ILimitOrderManager.sol";
 
-contract LimitOrderManagerAccessControl {
+contract BscLimitOrderManagerAccessControl {
 
     address public safeAddress;
     address public safeModule;
