@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../../../interfaces/uniswap/INonfungiblePositionManager.sol";
 
 
-contract ArbitrumNonfungiblePositionManagerAccessControl {
+contract NonfungiblePositionManagerAccessControl {
 
     address public safeModule;
     address public safeAddress;
@@ -54,6 +54,7 @@ contract ArbitrumNonfungiblePositionManagerAccessControl {
     fallback() external {
         revert("Unauthorized access");
     }
+
     function mint(INonfungiblePositionManager.MintParams calldata params) external view onlySelf {
         require(tokenWhiteList[params.token0], "token0 is not allowed");
         require(tokenWhiteList[params.token1], "token1 is not allowed");
