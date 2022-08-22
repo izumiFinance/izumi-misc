@@ -15,7 +15,6 @@ contract NonfungiblePositionManagerAccessControl {
     
 
     bytes32 internal _checkedRole;
-    uint256 internal _checkedValue;
 
     constructor(
         address _safeAddress,
@@ -40,9 +39,8 @@ contract NonfungiblePositionManagerAccessControl {
         _;
     }
 
-    function check(bytes32 _role, uint256 _value, bytes calldata data) external onlyModule returns (bool) {
+    function check(bytes32 _role, bytes calldata data) external onlyModule returns (bool) {
         _checkedRole = _role;
-        _checkedValue = _value;
         (bool success,) = address(this).staticcall(data);
         return success;
     }
