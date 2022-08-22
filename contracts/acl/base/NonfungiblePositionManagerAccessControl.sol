@@ -10,11 +10,8 @@ contract NonfungiblePositionManagerAccessControl {
     address public safeModule;
     address public safeAddress;
     address public uniV3NFTManager;
-    address public usdc;
-    address public weth;
 
-    address public token0;
-    address public token1;
+    mapping(address=>bool) public tokenWhiteList;
     
 
     bytes32 internal _checkedRole;
@@ -23,9 +20,7 @@ contract NonfungiblePositionManagerAccessControl {
     constructor(
         address _safeAddress,
         address _safeModule, 
-        address _uniV3NFTManager,
-        address _usdc,
-        address _weth
+        address _uniV3NFTManager
     ) {
 
         require(_safeAddress != address(0), "invalid safe address");
@@ -34,15 +29,6 @@ contract NonfungiblePositionManagerAccessControl {
         safeAddress = _safeAddress;
         safeModule = _safeModule;
         uniV3NFTManager = _uniV3NFTManager;
-        usdc = _usdc;
-        weth = _weth;
-        if (usdc < weth) {
-            token0 = usdc;
-            token1 = weth;
-        } else {
-            token1 = weth;
-            token0 = usdc;
-        }
     }
     modifier onlySelf() {
         require(address(this) == msg.sender, "Caller is not inner");
@@ -65,8 +51,8 @@ contract NonfungiblePositionManagerAccessControl {
         revert("Unauthorized access");
     }
     function mint(INonfungiblePositionManager.MintParams calldata params) external view onlySelf {
-        require(params.token0 == token0, "token0 must be weth or usdc");
-        require(params.token1 == token1, "token1 must be weth or usdc");
+        require(tokenWhiteList[params.token0], "token0 is not allowed");
+        require(tokenWhiteList[params.token1], "token1 is not allowed");
         require(params.recipient == safeAddress, "recipient must be safe address");
 
     }
@@ -92,7 +78,7 @@ contract NonfungiblePositionManagerAccessControl {
     ) external view onlySelf {
 
         require(recipient == safeAddress, "recipient must be safe address");
-        require(token == weth || token == usdc, "token must be weth or usdc");
+        require(tokenWhiteList[token], "token is not allowed");
     }
 
         
