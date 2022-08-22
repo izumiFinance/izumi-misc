@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 
 import "../../interfaces/iZiSwap/ILiquidityManager.sol";
 
-contract NonfungiblePositionManagerAccessControl {
+contract BscLiquidityManagerAccessControl {
 
     address public safeModule;
     address public safeAddress;
