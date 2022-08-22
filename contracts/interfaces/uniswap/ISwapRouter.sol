@@ -1,4 +1,5 @@
-
+// SPDX-License-Identifier: LGPL-3.0-only
+pragma solidity ^0.8.4;
 /// @title Router token swapping functionality
 /// @notice Functions for swapping tokens via Uniswap V3
 interface ISwapRouter {

@@ -8,7 +8,6 @@ contract BscLiquidityManagerAccessControl {
 
     address public safeModule;
     address public safeAddress;
-    address public liquidityManager;
 
     mapping(address=>bool) public tokenWhiteList;
     
@@ -26,7 +25,6 @@ contract BscLiquidityManagerAccessControl {
         safeAddress = _safeAddress;
         safeModule = _safeModule;
         
-        liquidityManager = 0x93C22Fbeff4448F2fb6e432579b0638838Ff9581;
         // wbnb
         tokenWhiteList[0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c] = true;
         // usdc
