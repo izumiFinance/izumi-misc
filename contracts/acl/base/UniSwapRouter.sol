@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.4;
 
-import "../interfaces/uniswap/ISwapRouter.sol";
+import "../../interfaces/uniswap/ISwapRouter.sol";
 
 
 contract UniSwapRouter {
@@ -27,8 +27,8 @@ contract UniSwapRouter {
     address public token1;
     
 
-    bytes32 private _checkedRole;
-    uint256 private _checkedValue;
+    bytes32 internal _checkedRole;
+    uint256 internal _checkedValue;
 
     constructor(
         address _safeModule, 
