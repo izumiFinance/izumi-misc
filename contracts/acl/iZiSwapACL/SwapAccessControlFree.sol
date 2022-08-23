@@ -18,7 +18,6 @@ contract SwapAccessControlFree {
 
     address public safeModule;
     address public safeAddress;
-    address public swapAddress;
 
     mapping(address=>bool) public tokenWhiteList;
     

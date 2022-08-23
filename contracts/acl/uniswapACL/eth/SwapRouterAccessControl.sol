@@ -20,7 +20,6 @@ contract EthSwapRouterAccessControl {
 
     address public safeAddress;
     address public safeModule;
-    address public uniSwapRouter;
     
     mapping(address=>bool) public tokenWhiteList;
 
@@ -35,7 +34,6 @@ contract EthSwapRouterAccessControl {
         require(_safeModule!= address(0), "invalid module address");
         safeModule = _safeModule;
         safeAddress = _safeAddress;
-        uniSwapRouter = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
         // usdc
         tokenWhiteList[0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48] = true;
         // weth
