@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../../../interfaces/uniswap/INonfungiblePositionManager.sol";
 
 
-contract NonfungiblePositionManagerAccessControl {
+contract ArbitrumNonfungiblePositionManagerAccessControl {
 
     address public safeModule;
     address public safeAddress;

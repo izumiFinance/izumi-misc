@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 import "../../../interfaces/uniswap/ISwapRouter.sol";
 
 
-contract SwapRouterAccessControl {
+contract ArbitrumSwapRouterAccessControl {
 
     /// @dev The length of the bytes encoded address
     uint256 private constant ADDR_SIZE = 20;
