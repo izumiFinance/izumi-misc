@@ -70,8 +70,9 @@ contract SwapProxy is Multicall {
         IERC20(token).safeApprove(spender, type(uint256).max);
     }
 
-    function proxy(address targetContract, bytes calldata data) external payable returns (bytes memory res){
-        (bool success, bytes memory result) = targetContract.call(data);
+    function proxy(address targetContract, bytes calldata data, uint256 msgValue) external payable returns (bytes memory res){
+        require(address(this).balance >= msgValue, "ETH NOT ENOUGH!");
+        (bool success, bytes memory result) = targetContract.call{value: msgValue}(data);
         
         if (!success) {
             // Next 5 lines from https://ethereum.stackexchange.com/a/83577
