@@ -67,7 +67,8 @@ contract SwapProxy is Multicall {
     }
 
     function approveToken(address token, address spender) external {
-        IERC20(token).safeApprove(spender, type(uint256).max);
+        bool ok = IERC20(token).approve(spender, type(uint256).max);
+        require(ok, 'approve fail');
     }
 
     function proxy(address targetContract, bytes calldata data, uint256 msgValue) external payable returns (bytes memory res){
