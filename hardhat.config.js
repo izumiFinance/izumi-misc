@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 require('hardhat-contract-sizer');
+require("@cronos-labs/hardhat-cronoscan")
 
 const secret = require('./.secret.js');
 
@@ -39,6 +40,14 @@ module.exports = {
       url: 'https://arb1.arbitrum.io/rpc',
       accounts: [sk]
     },
+    aurora: {
+      url: 'https://mainnet.aurora.dev',
+      accounts: [sk]
+    },
+    cronos: {
+      url: 'https://evm.cronos.org',
+      accounts: [sk]
+    },
     polygon: {
       url: 'https://rpc-mainnet.maticvigil.com',
       accounts: [sk]
@@ -66,10 +75,10 @@ module.exports = {
       accounts: [sk]
     },
     bscTest: {
-	    url: 'https://data-seed-prebsc-2-s1.binance.org:8545/',
+	    url: 'https://data-seed-prebsc-1-s2.binance.org:8545/',
       accounts: [sk],
       // gas: 90000000,
-      gasPrice: 10000000000,
+      gasPrice: 20000000000,
     },
     goerli: {
       url: 'https://goerli.prylabs.net',
@@ -80,6 +89,15 @@ module.exports = {
       url: 'https://testnet.aurora.dev',
       accounts: [sk],
       gasPrice: 5000000000,
+    },
+    etc: {
+      url: 'https://www.ethercluster.com/etc',
+      accounts: [sk],
+      gasPrice: 1100000000,
+    },
+    polygon: {
+      url: 'https://rpc-mainnet.maticvigil.com',
+      accounts: [sk],
     }
   },
   etherscan: {
