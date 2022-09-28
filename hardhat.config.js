@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 require('hardhat-contract-sizer');
+require("@cronos-labs/hardhat-cronoscan")
 
 const secret = require('./.secret.js');
 
@@ -93,6 +94,10 @@ module.exports = {
       url: 'https://www.ethercluster.com/etc',
       accounts: [sk],
       gasPrice: 1100000000,
+    },
+    polygon: {
+      url: 'https://rpc-mainnet.maticvigil.com',
+      accounts: [sk],
     }
   },
   etherscan: {
