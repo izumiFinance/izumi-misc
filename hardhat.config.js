@@ -59,7 +59,7 @@ module.exports = {
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       gas: 10000000,
-      gasPrice: 2500000000,
+      gasPrice: 5500000000,
       accounts: [sk]
     },
     ethereum: {
@@ -98,7 +98,23 @@ module.exports = {
     polygon: {
       url: 'https://rpc-mainnet.maticvigil.com',
       accounts: [sk],
-    }
+    },
+    zkSyncAlphaTest: {
+      url: 'https://zksync2-testnet.zksync.dev',
+      accounts: [sk],
+    },
+    mintleTest: {
+      url: 'https://rpc.testnet.mantle.xyz',
+      accounts: [sk],
+    },
+    scrollTestL2: {
+      url: 'https://prealpha.scroll.io/l2',
+      accounts: [sk],
+    },
+    icplazaTest: {
+      url: 'https://rpctest.ic-plaza.org/',
+      accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
