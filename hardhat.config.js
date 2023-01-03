@@ -103,7 +103,7 @@ module.exports = {
       url: 'https://zksync2-testnet.zksync.dev',
       accounts: [sk],
     },
-    mintleTest: {
+    mantleTest: {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [sk],
     },
@@ -113,6 +113,10 @@ module.exports = {
     },
     icplazaTest: {
       url: 'https://rpctest.ic-plaza.org/',
+      accounts: [sk],
+    },
+    icplaza: {
+      url: 'https://rpcmainnet.ic-plaza.org',
       accounts: [sk],
     },
   },
