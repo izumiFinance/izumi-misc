@@ -119,6 +119,18 @@ module.exports = {
       url: 'https://rpcmainnet.ic-plaza.org',
       accounts: [sk],
     },
+    syscoinTest: {
+      url: 'https://rpc.tanenbaum.io/',
+      accounts: [sk],
+    },
+    syscoin: {
+      url: 'https://rpc.ankr.com/syscoin',
+      accounts: [sk],
+    },
+    bedrockRolluxTestL2: {
+      url: 'https://bedrock.rollux.com:9545/',
+      accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
