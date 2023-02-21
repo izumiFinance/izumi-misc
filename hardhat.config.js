@@ -131,6 +131,11 @@ module.exports = {
       url: 'https://bedrock.rollux.com:9545/',
       accounts: [sk],
     },
+    confluxEspace: {
+      url: 'https://evm.confluxrpc.com',
+      accounts: [sk],
+      chainId: 1030,
+    }
   },
   etherscan: {
     apiKey: apiKey
