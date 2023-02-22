@@ -23,6 +23,17 @@ module.exports = {
           optimizer: {
             enabled: true,
             runs: 1000
+          },
+          outputSelection: {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+            }
           }
         }
       },
@@ -135,6 +146,10 @@ module.exports = {
       url: 'https://evm.confluxrpc.com',
       accounts: [sk],
       chainId: 1030,
+    },
+    meter: {
+      url: 'https://rpc.meter.io',
+      accounts: [sk],
     }
   },
   etherscan: {
