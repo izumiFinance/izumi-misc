@@ -72,6 +72,7 @@ const contracts = {
 		TEST_ARBITRUM_BLOCK: '0x93E94ef7D2d735fF21C302c765d8A77C1955A311',
 		coboSafeModule: '0x976cc8528c5A3CCd4D9fd9bBd2da7Ca5e7cc4BbA',
 		coboSafeAddress: '0xA3ffEA6A7368e07fb79C9DD1fe25928BEa3aef38',
+		uniswapRouter: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
 	},
 
 	polygon: {
@@ -154,6 +155,7 @@ const contracts = {
 		testB: '0xAD1F11FBB288Cd13819cCB9397E59FAAB4Cdc16F',
 		safeAddress: '0x720b037568F8c57Acee8E8a0f39473eC5407E067',
         safeModule: '0x82F60d84A36F058F6Fbe849F03326f64bB38299A',
+		pancakeSwapRouter: '0x10ed43c718714eb63d5aa57b78b54704e256024e',
 	},
 
 	bscTest: {
