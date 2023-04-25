@@ -74,7 +74,7 @@ module.exports = {
       accounts: [sk]
     },
     ethereum: {
-      url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      url: "https://mainnet.infura.io/v3/{your eth api key}",
       gas: 800000,
       gasPrice: 45000000000,
       accounts: [sk]
