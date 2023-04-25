@@ -95,6 +95,10 @@ module.exports = {
       url: 'https://polaris1.ont.io:10339',
       accounts: [sk],
     },
+    ontology: {
+      url: 'https://dappnode1.ont.io:10339',
+      accounts: [sk],
+    },
     goerli: {
       url: 'https://goerli.prylabs.net',
       accounts: [sk],
