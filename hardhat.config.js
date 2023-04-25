@@ -91,6 +91,10 @@ module.exports = {
       // gas: 90000000,
       gasPrice: 20000000000,
     },
+    ontologyTest: {
+      url: 'https://polaris1.ont.io:10339',
+      accounts: [sk],
+    },
     goerli: {
       url: 'https://goerli.prylabs.net',
       accounts: [sk],
