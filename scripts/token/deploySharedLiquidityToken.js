@@ -21,7 +21,7 @@ async function main() {
   const amount = new BigNumber(para.amount).times(10 ** Number(para.decimal)).toFixed(0)
 
   // We get the contract to deploy
-  const tokenFactory = await hardhat.ethers.getContractFactory("TokenWithManagement")
+  const tokenFactory = await hardhat.ethers.getContractFactory("SharedLiquidityToken")
   const args = [para.tokenName, para.tokenSymbol, para.decimal, amount]
   console.log('args: ', args)
   const token = await tokenFactory.deploy(para.tokenName, para.tokenSymbol, para.decimal, amount);
