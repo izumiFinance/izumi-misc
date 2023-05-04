@@ -20,8 +20,8 @@ contract SharedLiquidityToken is ERC20, Ownable {
         _mint(account, amount);
     }
 
-    function burn(address account, uint amount) public onlyOwner {
-        _burn(account, amount);
+    function burn(uint amount) public {
+        _burn(msg.sender, amount);
     }
 
     function decimals() public view override returns (uint8) {
