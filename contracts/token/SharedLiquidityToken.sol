@@ -36,7 +36,7 @@ contract SharedLiquidityToken is ERC20, Ownable {
         delete blackList[account];
     }
 
-    function setPaused(bool _pause) external onlyOwner {
+    function setPause(bool _pause) external onlyOwner {
         pause = _pause;
     }
 
