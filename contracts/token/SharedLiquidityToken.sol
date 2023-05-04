@@ -1,10 +1,10 @@
-// SPDX-License-Identifier: UNLICENSED
+//  SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract TokenWithManagement is ERC20, Ownable {
+contract SharedLiquidityToken is ERC20, Ownable {
     uint8 decimal;
     mapping(address => bool) public blackList;
     bool public pause;
@@ -20,24 +20,24 @@ contract TokenWithManagement is ERC20, Ownable {
         _mint(account, amount);
     }
 
+    function burn(address account, uint amount) public onlyOwner {
+        _burn(account, amount);
+    }
+
     function decimals() public view override returns (uint8) {
         return decimal;
     }
 
-    function pauseAccount(address account) external onlyOwner {
+    function freezeAccount(address account) external onlyOwner {
         blackList[account] = true;
     }
 
-    function unpauseAccount(address account) external onlyOwner {
+    function unfreezeAccount(address account) external onlyOwner {
         delete blackList[account];
     }
 
-    function pauseTransfer() external onlyOwner {
-        pause = true;
-    }
-
-    function unpauseTransfer() external onlyOwner {
-        pause = false;
+    function setPaused(bool _pause) external onlyOwner {
+        pause = _pause;
     }
 
     function _beforeTokenTransfer(
