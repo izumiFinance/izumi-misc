@@ -22,6 +22,8 @@ async function main() {
 
   // We get the contract to deploy
   const tokenFactory = await hardhat.ethers.getContractFactory("TokenWithManagement")
+  const args = [para.tokenName, para.tokenSymbol, para.decimal, amount]
+  console.log('args: ', args)
   const token = await tokenFactory.deploy(para.tokenName, para.tokenSymbol, para.decimal, amount);
   
   await token.deployed();
