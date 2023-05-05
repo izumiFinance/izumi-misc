@@ -28,11 +28,11 @@ contract SharedLiquidityToken is ERC20, Ownable {
         return decimal;
     }
 
-    function freezeAccount(address account) external onlyOwner {
+    function freeze(address account) external onlyOwner {
         blackList[account] = true;
     }
 
-    function unfreezeAccount(address account) external onlyOwner {
+    function unfreeze(address account) external onlyOwner {
         delete blackList[account];
     }
 
