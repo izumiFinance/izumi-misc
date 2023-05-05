@@ -46,7 +46,7 @@ contract SharedLiquidityToken is ERC20, Ownable {
         uint256
     ) internal view override {
         require(!pause, "paused!");
-        require(!blackList[from], "from is baned!");
-        require(!blackList[to], "to is baned!");
+        require(!blackList[from], "from is banned!");
+        require(!blackList[to], "to is banned!");
     }
 }
