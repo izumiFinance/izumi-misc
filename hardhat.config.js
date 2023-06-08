@@ -122,6 +122,10 @@ module.exports = {
       url: 'https://zksync2-testnet.zksync.dev',
       accounts: [sk],
     },
+    zkSyncEraMainnet: {
+      url: 'https://zksync2-mainnet.zksync.io',
+      accounts: [sk],
+    },
     mantleTest: {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [sk],
