@@ -131,7 +131,7 @@ module.exports = {
       accounts: [sk],
     },
     scrollTestL2: {
-      url: 'https://prealpha.scroll.io/l2',
+      url: 'https://alpha-rpc.scroll.io/l2',
       accounts: [sk],
     },
     icplazaTest: {
@@ -166,7 +166,15 @@ module.exports = {
     telos: {
       url: 'https://mainnet.telos.net/evm',
       accounts: [sk],
-    }
+    },
+    ultron: {
+       url: 'https://ultron-rpc.net',
+       accounts: [sk],
+    },
+    lineaTest: {
+       url: 'https://rpc.goerli.linea.build/',
+       accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
