@@ -91,6 +91,11 @@ module.exports = {
       // gas: 90000000,
       gasPrice: 20000000000,
     },
+    opBNBTest: {
+      url: 'https://opbnb-testnet-rpc.bnbchain.org',
+      accounts: [sk],
+      gasPrice: 5000000000,
+    },
     ontologyTest: {
       url: 'https://polaris1.ont.io:10339',
       accounts: [sk],
@@ -128,6 +133,10 @@ module.exports = {
     },
     mantleTest: {
       url: 'https://rpc.testnet.mantle.xyz',
+      accounts: [sk],
+    },
+    mantle: {
+      url: 'https://rpc.mantle.xyz',
       accounts: [sk],
     },
     scrollTestL2: {
