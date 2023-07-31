@@ -192,6 +192,10 @@ module.exports = {
        url: 'https://pre-alpha-zkrollup-rpc.opside.network/public',
        accounts: [sk],
     },
+    base: {
+      url: 'https://developer-access-mainnet.base.org',
+      accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
