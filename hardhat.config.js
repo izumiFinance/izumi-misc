@@ -200,6 +200,10 @@ module.exports = {
       url: 'https://developer-access-mainnet.base.org',
       accounts: [sk],
     },
+    loot: {
+      url: 'https://rpc.lootchain.com/http',
+      accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
