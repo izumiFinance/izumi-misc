@@ -13,6 +13,7 @@ const izumiRpcUrl = "http://47.241.103.6:9545";
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+
 module.exports = {
   solidity: {
 
@@ -200,8 +201,21 @@ module.exports = {
       url: 'https://developer-access-mainnet.base.org',
       accounts: [sk],
     },
+    baseTest: {
+      url: 'https://goerli.base.org',
+      accounts: [sk],
+      gasPrice: 110000000
+    },
     loot: {
       url: 'https://rpc.lootchain.com/http',
+      accounts: [sk],
+    },
+    mantaTest: {
+      url: 'https://manta-testnet.calderachain.xyz/http',
+      accounts: [sk],
+    },
+    stagingFastActiveBellatrix: {
+      url: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
       accounts: [sk],
     },
   },
