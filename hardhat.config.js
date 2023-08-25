@@ -144,8 +144,8 @@ module.exports = {
       url: 'https://rpc.mantle.xyz',
       accounts: [sk],
     },
-    scrollTestL2: {
-      url: 'https://alpha-rpc.scroll.io/l2',
+    scrollSepoliaTest: {
+      url: 'https://sepolia-rpc.scroll.io',
       accounts: [sk],
     },
     icplazaTest: {
@@ -196,6 +196,11 @@ module.exports = {
     opsideTest: {
        url: 'https://pre-alpha-us-http-geth.opside.network',
        accounts: [sk],
+    },
+    opBNB: {
+       url: 'https://opbnb-mainnet-rpc.bnbchain.org',
+       accounts: [sk],
+       gasPrice: 100,
     },
     opsideTestRollux: {
        url: 'https://pre-alpha-zkrollup-rpc.opside.network/public',
