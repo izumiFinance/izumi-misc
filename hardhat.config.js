@@ -239,6 +239,11 @@ module.exports = {
       url: 'https://api.sepolia.kroma.network',
       accounts: [sk],
     },
+    kromaMainnet: {
+      url: 'https://api.kroma.network/',
+      accounts: [sk],
+      gasPrice: 60
+    },
   },
   etherscan: {
     apiKey: apiKey
