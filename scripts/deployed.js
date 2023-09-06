@@ -220,7 +220,10 @@ const contracts = {
         OT: "0xd0ea21ba66b67be636de1ec4bd9696eb8c61e9aa",
         SPACE: "0x47260090cE5e83454d5f05A0AbbB2C953835f777",
         xSPACE: "0x6aF43486Cb84bE0e3EDdCef93d3C43Ef0C5F63b1",
-	}
+	},
+	linea: {
+            AIRDROP: '0x3335A38Aae20c2F3Cd2F44E276b309B5c9fF1dd2',
+	},
 }
 
 
