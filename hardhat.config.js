@@ -13,6 +13,7 @@ const izumiRpcUrl = "http://47.241.103.6:9545";
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+
 module.exports = {
   solidity: {
 
@@ -96,6 +97,10 @@ module.exports = {
       accounts: [sk],
       gasPrice: 5000000000,
     },
+    opBNB: {
+      url: 'https://opbnb-mainnet-rpc.bnbchain.org',
+      accounts: [sk],
+    },
     ontologyTest: {
       url: 'https://polaris1.ont.io:10339',
       accounts: [sk],
@@ -139,8 +144,8 @@ module.exports = {
       url: 'https://rpc.mantle.xyz',
       accounts: [sk],
     },
-    scrollTestL2: {
-      url: 'https://alpha-rpc.scroll.io/l2',
+    scrollSepoliaTest: {
+      url: 'https://sepolia-rpc.scroll.io',
       accounts: [sk],
     },
     icplazaTest: {
@@ -192,6 +197,11 @@ module.exports = {
        url: 'https://pre-alpha-us-http-geth.opside.network',
        accounts: [sk],
     },
+    opBNB: {
+       url: 'https://opbnb-mainnet-rpc.bnbchain.org',
+       accounts: [sk],
+       gasPrice: 100,
+    },
     opsideTestRollux: {
        url: 'https://pre-alpha-zkrollup-rpc.opside.network/public',
        accounts: [sk],
@@ -200,9 +210,39 @@ module.exports = {
       url: 'https://developer-access-mainnet.base.org',
       accounts: [sk],
     },
+    baseTest: {
+      url: 'https://goerli.base.org',
+      accounts: [sk],
+      gasPrice: 110000000
+    },
     loot: {
       url: 'https://rpc.lootchain.com/http',
       accounts: [sk],
+    },
+    mantaTest: {
+      url: 'https://manta-testnet.calderachain.xyz/http',
+      accounts: [sk],
+    },
+    stagingFastActiveBellatrix: {
+      url: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
+      accounts: [sk],
+    },
+    optimism: {
+      url: 'https://mainnet.optimism.io',
+      accounts: [sk],
+    },
+    zetaTest: {
+      url: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
+      accounts: [sk],
+    },
+    kromaSepoliaTest: {
+      url: 'https://api.sepolia.kroma.network',
+      accounts: [sk],
+    },
+    kromaMainnet: {
+      url: 'https://api.kroma.network/',
+      accounts: [sk],
+      gasPrice: 60
     },
   },
   etherscan: {
