@@ -252,6 +252,9 @@ const contracts = {
 	},
 	loot: {
 	    SoSwap: '0x7e11C99f499e18325dCA898f3Df12e45fE7EAD58',
+	},
+	kromaMainnet: {
+		iZiSwapFactory: '0x8c7d3063579BdB0b90997e18A770eaE32E1eBb08',
 	}
 }
 
