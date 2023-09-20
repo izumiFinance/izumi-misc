@@ -223,6 +223,10 @@ module.exports = {
       url: 'https://manta-testnet.calderachain.xyz/http',
       accounts: [sk],
     },
+    manta: {
+      url: 'https://manta-pacific.calderachain.xyz/http',
+      accounts: [sk],
+    },
     stagingFastActiveBellatrix: {
       url: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
       accounts: [sk],
@@ -243,6 +247,10 @@ module.exports = {
       url: 'https://api.kroma.network/',
       accounts: [sk],
       gasPrice: 60
+    },
+    gasZeroGoerliL2: {
+      url: 'https://goerlitest.gaszero.com/',
+      accounts: [sk],
     },
   },
   etherscan: {
