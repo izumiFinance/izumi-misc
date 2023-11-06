@@ -8,7 +8,7 @@ contract TestGas {
     mapping(address => uint256) public balance;
 
     mapping(address => uint256) public gasUsed;
-    mapping(address => uint256) public gasCost;
+    mapping(address => uint256) public gasPrice;
 
     function mint(uint256 amount) external {
         balance[msg.sender] += amount;
@@ -20,12 +20,10 @@ contract TestGas {
             balance[msg.sender] -= amount;
             balance[to] += amount;
             gasUsed[msg.sender] = i;
-            gasCost[msg.sender] = i + 1;
         }
         uint256 gas = gasleft() - startGas;
-        uint256 cost = tx.gasprice * gas;
         gasUsed[msg.sender] = gas;
-        gasCost[msg.sender] = cost;
+        gasPrice[msg.sender] = tx.gasprice;
     }
 
 }
