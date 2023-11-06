@@ -21,7 +21,7 @@ contract TestGas {
             balance[to] += amount;
             gasUsed[msg.sender] = i;
         }
-        uint256 gas = gasleft() - startGas;
+        uint256 gas = startGas - gasleft();
         gasUsed[msg.sender] = gas;
         gasPrice[msg.sender] = tx.gasprice;
     }
