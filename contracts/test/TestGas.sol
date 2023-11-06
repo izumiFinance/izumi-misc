@@ -14,7 +14,7 @@ contract TestGas {
         balance[msg.sender] += amount;
     }
 
-    function test(address to, uint256 amount, uint256 iter) external returns (uint256[] memory) {
+    function test(address to, uint256 amount, uint256 iter) external {
         uint256 startGas = gasleft();
         for (uint256 i = 0; i < iter; i ++) {
             balance[msg.sender] -= amount;
