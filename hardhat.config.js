@@ -252,6 +252,10 @@ module.exports = {
       url: 'https://goerlitest.gaszero.com/',
       accounts: [sk],
     },
+    x1Test: {
+      url: 'https://testrpc.x1.tech',
+      accounts: [sk],
+    },
   },
   etherscan: {
     apiKey: apiKey
