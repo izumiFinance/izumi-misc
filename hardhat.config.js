@@ -148,6 +148,10 @@ module.exports = {
       url: 'https://sepolia-rpc.scroll.io',
       accounts: [sk],
     },
+    scroll: {
+      url: 'https://rpc.scroll.io',
+      accounts: [sk],
+    },
     icplazaTest: {
       url: 'https://rpctest.ic-plaza.org/',
       accounts: [sk],
