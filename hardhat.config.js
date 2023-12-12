@@ -110,7 +110,7 @@ module.exports = {
       accounts: [sk],
     },
     goerli: {
-      url: 'https://goerli.prylabs.net',
+      url: 'https://rpc.goerli.eth.gateway.fm',
       accounts: [sk],
       gasPrice: 10000000000,
     },
@@ -266,6 +266,16 @@ module.exports = {
     },
   },
   etherscan: {
+    customChains:[
+      {
+          network: "baseTest",
+          chainId: 84531,
+          urls: {
+	      apiURL: "https://goerli.basescan.org/api",
+              browserURL: "https://goerli.basescan.org",
+          }
+      }
+    ],
     apiKey: apiKey
   }
 };
