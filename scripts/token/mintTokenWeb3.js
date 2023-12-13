@@ -7,9 +7,21 @@ const secret = require('../../.secret.js');
 const pk = secret.pk;
 
 const config = require("../../hardhat.config.js");
-const contracts = require('../deployed.js');
 
 const tokenABI = [
+    {
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [
+          {
+            "internalType": "uint8",
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     {
       "inputs": [
         {
@@ -108,7 +120,7 @@ var web3 = new Web3(new Web3.providers.HttpProvider(rpc));
 const para = {
     tokenAddress: v[2],
     toAddress: v[3],
-    amount: v[4],
+    amountDecimal: v[4],
 }
 
 async function main() {
@@ -120,8 +132,13 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   var token = new web3.eth.Contract(tokenABI, para.tokenAddress);
 
-  const txData = await token.methods.mint(para.toAddress, para.amount).encodeABI()
-  const gasLimit = await token.methods.mint(para.toAddress, para.amount).estimateGas({from: deployer.address});
+  const decimals = await token.methods.decimals().call()
+  console.log('decimals: ', decimals)
+
+  const amount = new BigNumber(para.amountDecimal).times(10 ** Number(decimals)).toFixed()
+
+  const txData = await token.methods.mint(para.toAddress, amount).encodeABI()
+  const gasLimit = await token.methods.mint(para.toAddress, amount).estimateGas({from: deployer.address});
   console.log('gas limit: ', gasLimit);
   const signedTx = await web3.eth.accounts.signTransaction(
       {
