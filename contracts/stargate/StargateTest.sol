@@ -24,6 +24,7 @@ contract StargateTest is Ownable {
     );
 
     address public stargateComposer;
+    address public sgeth;
 
     receive() external payable {}
 
@@ -52,12 +53,17 @@ contract StargateTest is Ownable {
         require(success && (data.length == 0 || abi.decode(data, (bool))), 'STF');
     }
 
-    constructor(address _stargateComposer) {
+    constructor(address _stargateComposer, address _sgeth) {
         stargateComposer = _stargateComposer;
+        sgeth = _sgeth;
     }
 
     function setStargateComposer(address _stargateComposer) onlyOwner external {
         stargateComposer = _stargateComposer;
+    }
+
+    function setSgeth(address _sgeth) onlyOwner external {
+        sgeth = _sgeth;
     }
 
     function srcDeposit(address token, uint256 amount) internal {
@@ -111,7 +117,7 @@ contract StargateTest is Ownable {
         uint256 gasLeft = gasleft();
         require(msg.sender == stargateComposer, "Not stargate composer!");
         (address recipient) = abi.decode(payload, (address));
-        if (_token == address(0)) {
+        if (_token == sgeth) {
             safeTransferETH(recipient, address(this).balance);
         } else {
             safeTransfer(_token, recipient, amountLD);
