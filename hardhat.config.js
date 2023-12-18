@@ -69,15 +69,15 @@ module.exports = {
       accounts: [sk]
     },
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      url: "https://rinkeby.infura.io/v3/${your api key}",
       gas: 10000000,
       gasPrice: 5500000000,
       accounts: [sk]
     },
     ethereum: {
-      url: "https://mainnet.infura.io/v3/{your eth api key}",
+      url: "https://mainnet.infura.io/v3/${your api key}",
       gas: 800000,
-      gasPrice: 45000000000,
+      gasPrice: 33000000000,
       accounts: [sk]
     },
     bsc: {
@@ -274,7 +274,15 @@ module.exports = {
 	      apiURL: "https://goerli.basescan.org/api",
               browserURL: "https://goerli.basescan.org",
           }
-      }
+      },
+      {
+          network: "base",
+          chainId: 8453,
+          urls: {
+              apiURL: "https://api.basescan.org/api",
+              browserURL: "https://basescan.org",
+          }
+      },
     ],
     apiKey: apiKey
   }
