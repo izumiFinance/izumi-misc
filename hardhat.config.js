@@ -264,6 +264,10 @@ module.exports = {
       url: 'https://testnet-rpc.zkfair.io/',
       accounts: [sk],
     },
+    zkfair: {
+      url: 'https://rpc.zkfair.io ',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
