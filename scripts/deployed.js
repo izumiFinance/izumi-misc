@@ -272,6 +272,12 @@ const contracts = {
         zkfair: {
 	        iZiSwapFactory: '0x8c7d3063579BdB0b90997e18A770eaE32E1eBb08',
 	},
+        manta: {
+		iZiSwapFactory: '0x8c7d3063579BdB0b90997e18A770eaE32E1eBb08',
+                ASM: '0xCd5d6dE3fdBce1895F0Dac13A065673599ED6806',
+                STONE: '0xEc901DA9c68E90798BbBb74c11406A32A70652C3',
+                iZi: '0x91647632245caBf3d66121F86C387aE0ad295F9A',
+        },
 }
 
 
