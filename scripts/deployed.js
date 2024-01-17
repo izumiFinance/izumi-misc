@@ -268,6 +268,9 @@ const contracts = {
 	gasZeroGoerliL2: {
 		iZiSwapFactory: '0x64c2F1306b4ED3183E7B345158fd01c19C0d8c5E',
 	},
+	neon: {
+		VibrSwapFactory: '0x3EF68D3f7664b2805D4E88381b64868a56f88bC4',
+	}
 }
 
 

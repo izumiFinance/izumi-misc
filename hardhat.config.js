@@ -264,6 +264,10 @@ module.exports = {
       url: 'https://testnet-rpc.zkfair.io/',
       accounts: [sk],
     },
+    neon: {
+      url: 'https://neon-proxy-mainnet.solana.p2p.org',
+      accounts: [sk],
+    }
   },
   etherscan: {
     customChains:[
