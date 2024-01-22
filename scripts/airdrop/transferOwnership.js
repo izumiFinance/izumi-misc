@@ -51,7 +51,7 @@ async function main() {
   var setProviderTxData = airdrop.methods.transferOwnership(para.newOwner).encodeABI();
   var signedSetProviderTxData = await web3.eth.accounts.signTransaction(
     {
-        gasPrice: 5000000000,
+        // gasPrice: 5000000000,
         to: airdropAddr,
         data:setProviderTxData,
         gas: 35000,
