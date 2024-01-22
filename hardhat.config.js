@@ -228,7 +228,7 @@ module.exports = {
       accounts: [sk],
     },
     manta: {
-      url: 'https://manta-pacific.calderachain.xyz/http',
+      url: 'https://pacific-rpc.manta.network/http',
       accounts: [sk],
     },
     stagingFastActiveBellatrix: {
