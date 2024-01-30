@@ -288,6 +288,9 @@ const contracts = {
 		WUSDM: '0xbdAd407F77f44F7Da6684B416b1951ECa461FB07',
 		AIRDROP: '0x130f74273856Dfc5Ee8AE485FE991c0cC6411f39',
     },
+	zeta: {
+	    iZiSwapFactory: '0x8c7d3063579BdB0b90997e18A770eaE32E1eBb08',
+	},
 }
 
 
