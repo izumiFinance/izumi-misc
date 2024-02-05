@@ -62,6 +62,7 @@ async function main() {
           // nonce: 0,
           to: iZiSwapFactoryAddress,
           data:txData,
+          gasPrice: 50000000,
           gas: BigNumber(gasLimit * 1.1).toFixed(0, 2),
       }, 
       pk

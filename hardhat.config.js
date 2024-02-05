@@ -280,6 +280,10 @@ module.exports = {
       url: 'https://testnet-rpc.merlinchain.io',
       accounts: [sk],
     },
+    merlin: {
+      url: 'https://rpc.merlinchain.io',
+      accounts: [sk],
+    },
     blastSepoliaTest: {
       url: 'https://sepolia.blast.io',
       accounts: [sk],
