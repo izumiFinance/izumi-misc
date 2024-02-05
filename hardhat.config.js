@@ -284,6 +284,10 @@ module.exports = {
       url: 'https://sepolia.blast.io',
       accounts: [sk],
     },
+    taikoKatlaL2Test: {
+      url: 'https://rpc.katla.taiko.xyz',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
