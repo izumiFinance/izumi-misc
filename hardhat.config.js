@@ -292,6 +292,14 @@ module.exports = {
       url: 'https://rpc.katla.taiko.xyz',
       accounts: [sk],
     },
+    beraTest: {
+      url: 'https://artio.rpc.berachain.com/',
+      accounts: [sk],
+    },
+    morphTest: {
+      url: 'https://rpc-testnet.morphl2.io',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
