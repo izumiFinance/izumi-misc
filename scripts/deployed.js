@@ -296,6 +296,7 @@ const contracts = {
         ZETA: '0x5f0b1a82749cb4e2278ec87f8bf6b618dc71a8bf',
         USDT_eth: '0x7c8dDa80bbBE1254a7aACf3219EBe1481c6E01d7',
         iZi: '0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747',
+		AIRDROP: '0x2bd46C9F863120Ebd8ef2f616D180c8f5FE36FB9',
 	},
 	merlin: {
 		MerlinSwapFactory: '0xE29a6620DAc789B8a76e9b9eC8fE9B7cf2B663D5',
