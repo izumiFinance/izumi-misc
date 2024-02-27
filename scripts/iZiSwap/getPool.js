@@ -54,7 +54,8 @@ const para = {
     token0Address: contracts[net][v[2]],
     token1Symbol: v[3],
     token1Address: contracts[net][v[3]],
-    fee: v[4]
+    fee: v[4],
+    tag: v.length >= 6 ? v[5] : 'iZiSwapFactory'
 }
 
 async function main() {
@@ -62,7 +63,7 @@ async function main() {
   console.log("Paramters: ");
   for ( var i in para) { console.log("    " + i + ": " + para[i]); }
   
-  const iZiSwapFactoryAddress = contracts[net]['iZiSwapFactory']
+  const iZiSwapFactoryAddress = contracts[net][para.tag]
   const factory = new web3.eth.Contract(factoryABI, iZiSwapFactoryAddress)
   const pool = await factory.methods.pool(para.token0Address, para.token1Address, para.fee).call()
   console.log('pool: ', pool)
