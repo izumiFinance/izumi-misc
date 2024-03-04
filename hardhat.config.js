@@ -140,6 +140,10 @@ module.exports = {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [sk],
     },
+    mantleSepoliaTest: {
+      url: 'https://rpc.sepolia.mantle.xyz',
+      accounts: [sk],
+    },
     mantle: {
       url: 'https://rpc.mantle.xyz',
       accounts: [sk],
@@ -286,6 +290,10 @@ module.exports = {
     },
     blastSepoliaTest: {
       url: 'https://sepolia.blast.io',
+      accounts: [sk],
+    },
+    blast: {
+      url: 'https://blast.blockpi.network/v1/rpc/public',
       accounts: [sk],
     },
     taikoKatlaL2Test: {
