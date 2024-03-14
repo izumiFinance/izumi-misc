@@ -312,6 +312,22 @@ module.exports = {
       url: 'https://goerli.rpc.zklink.io',
       accounts: [sk],
     },
+    MAP: {
+      url: 'https://rpc.maplabs.io',
+      accounts: [sk]
+    },
+    zklinkNova: {
+      url: 'https://rpc.zklink.io',
+      accounts: [sk]
+    },
+    modeSepoliaTest: {
+	    url: 'https://sepolia.mode.network/',
+      accounts: [sk],
+    },
+    modeMainnet: {
+      url: 'https://mainnet.mode.network/',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
