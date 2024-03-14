@@ -288,6 +288,10 @@ module.exports = {
       url: 'https://sepolia.blast.io',
       accounts: [sk],
     },
+    blast: {
+      url: 'https://blast.blockpi.network/v1/rpc/public',
+      accounts: [sk],
+    },
     taikoKatlaL2Test: {
       url: 'https://rpc.katla.taiko.xyz',
       accounts: [sk],
@@ -298,6 +302,22 @@ module.exports = {
     },
     morphTest: {
       url: 'https://rpc-testnet.morphl2.io',
+      accounts: [sk],
+    },
+    MAP: {
+      url: 'https://rpc.maplabs.io',
+      accounts: [sk]
+    },
+    zklinkNova: {
+      url: 'https://rpc.zklink.io',
+      accounts: [sk]
+    },
+    modeSepoliaTest: {
+	    url: 'https://sepolia.mode.network/',
+      accounts: [sk],
+    },
+    modeMainnet: {
+      url: 'https://mainnet.mode.network/',
       accounts: [sk],
     },
   },

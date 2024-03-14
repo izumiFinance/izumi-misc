@@ -298,9 +298,6 @@ const contracts = {
         iZi: '0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747',
 		AIRDROP: '0x2bd46C9F863120Ebd8ef2f616D180c8f5FE36FB9',
 	},
-	merlin: {
-		MerlinSwapFactory: '0xE29a6620DAc789B8a76e9b9eC8fE9B7cf2B663D5',
-	}
 }
 
 
