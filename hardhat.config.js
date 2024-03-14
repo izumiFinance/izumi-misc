@@ -308,6 +308,10 @@ module.exports = {
       url: 'https://rpc-testnet.morphl2.io',
       accounts: [sk],
     },
+    zklinkNovaTest: {
+      url: 'https://goerli.rpc.zklink.io',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
