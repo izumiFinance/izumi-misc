@@ -328,6 +328,20 @@ module.exports = {
       url: 'https://mainnet.mode.network/',
       accounts: [sk],
     },
+    XLayer: {
+      // url: 'https://rpc.xlayer.tech',
+      url: 'https://xlayerrpc.okx.com',
+      accounts: [sk],
+      gasPrice: 10000000000,
+    },
+    cyber: {
+      url: 'https://cyber.alt.technology/',
+      accounts: [sk],
+    },
+    klaytn: {
+      url: 'https://klaytn-pokt.nodies.app',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
