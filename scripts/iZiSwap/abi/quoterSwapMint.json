@@ -1,0 +1,51 @@
+[{
+    "inputs": [
+        {
+        "components": [
+            {
+            "internalType": "address",
+            "name": "poolAddress",
+            "type": "address"
+            },
+            {
+            "internalType": "int24",
+            "name": "targetPt",
+            "type": "int24"
+            }
+        ],
+        "internalType": "struct QuoterSwapMint.QuoteParams",
+        "name": "params",
+        "type": "tuple"
+        }
+    ],
+    "name": "swap",
+    "outputs": [
+        {
+        "internalType": "uint256",
+        "name": "payAmountX",
+        "type": "uint256"
+        },
+        {
+        "internalType": "uint256",
+        "name": "payAmountY",
+        "type": "uint256"
+        },
+        {
+        "internalType": "uint256",
+        "name": "acquireAmountX",
+        "type": "uint256"
+        },
+        {
+        "internalType": "uint256",
+        "name": "acquireAmountY",
+        "type": "uint256"
+        },
+        {
+        "internalType": "int24",
+        "name": "finalPt",
+        "type": "int24"
+        }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}]

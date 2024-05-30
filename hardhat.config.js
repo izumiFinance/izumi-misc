@@ -248,7 +248,7 @@ module.exports = {
       accounts: [sk],
     },
     zeta: {
-      url: 'https://{zeta rpc url}',
+      url: 'https://zetachain-mainnet-archive.allthatnode.com:8545',
       accounts: [sk],
     },
     kromaSepoliaTest: {
@@ -337,8 +337,23 @@ module.exports = {
       url: 'https://mainnet.mode.network/',
       accounts: [sk],
     },
+<<<<<<< HEAD
     BOB: {
       url: 'https://rpc.gobob.xyz',
+=======
+    XLayer: {
+      // url: 'https://rpc.xlayer.tech',
+      url: 'https://xlayerrpc.okx.com',
+      accounts: [sk],
+      gasPrice: 10000000000,
+    },
+    cyber: {
+      url: 'https://cyber.alt.technology/',
+      accounts: [sk],
+    },
+    klaytn: {
+      url: 'https://klaytn-pokt.nodies.app',
+>>>>>>> fd86b81429d613433399b7ad94ef0112d2541734
       accounts: [sk],
     },
   },
