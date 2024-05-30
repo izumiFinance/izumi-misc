@@ -45,13 +45,13 @@ async function main() {
         const tokenAddress = tokenAAddress.toLowerCase() < tokenBAddress.toLowerCase() ? tokenAAddress : tokenBAddress
         const token = new web3.eth.Contract(erc20ABI, tokenAddress)
         const decimals = await token.methods.decimals().call()
-        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals)
+        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals).toFixed(0)
     } else if (targetPt > currentPoint) {
         // need y2x
         const tokenAddress = tokenAAddress.toLowerCase() < tokenBAddress.toLowerCase() ? tokenBAddress : tokenAAddress
         const token = new web3.eth.Contract(erc20ABI, tokenAddress)
         const decimals = await token.methods.decimals().call()
-        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals)
+        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals).toFixed(0)
     }
     const {
         payAmountX, 
