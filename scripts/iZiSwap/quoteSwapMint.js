@@ -1,9 +1,16 @@
 const quoterABI = require('./abi/quoterSwapMint.json')
 const { default: BigNumber } = require('bignumber.js')
 const {ethers} = require("hardhat");
+const Web3 = require("web3");
 
 const v = process.argv
 const confJsonPath = v[2]
+
+const net = process.env.HARDHAT_NETWORK
+const config = require("../../hardhat.config.js");
+
+const rpc = config.networks[net].url
+const web3 = new Web3(new Web3.providers.HttpProvider(rpc));
 
 function getConfJson(path) {
     const fs = require('fs');
