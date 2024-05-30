@@ -248,7 +248,7 @@ module.exports = {
       accounts: [sk],
     },
     zeta: {
-      url: 'https://{zeta rpc url}',
+      url: 'https://zetachain-mainnet-archive.allthatnode.com:8545',
       accounts: [sk],
     },
     kromaSepoliaTest: {
@@ -299,6 +299,11 @@ module.exports = {
     taikoKatlaL2Test: {
       url: 'https://rpc.katla.taiko.xyz',
       accounts: [sk],
+    },
+    taiko: {
+      url: 'https://rpc.mainnet.taiko.xyz',
+      accounts: [sk],
+      gasPrice: 12000000,
     },
     beraTest: {
       url: 'https://artio.rpc.berachain.com/',
