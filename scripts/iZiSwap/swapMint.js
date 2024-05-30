@@ -2,6 +2,8 @@ const swapMintABI = require('./abi/swapMint.json')
 const tokenABI = require('./abi/erc20.json')
 const { calciZiLiquidityAmountDesired} = require('./funcs')
 const { default: BigNumber } = require('bignumber.js')
+const {ethers} = require("hardhat");
+
 const v = process.argv
 const confJsonPath = v[2]
 

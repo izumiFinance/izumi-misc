@@ -1,5 +1,7 @@
 const quoterABI = require('./abi/quoterSwapMint.json')
 const { default: BigNumber } = require('bignumber.js')
+const {ethers} = require("hardhat");
+
 const v = process.argv
 const confJsonPath = v[2]
 
