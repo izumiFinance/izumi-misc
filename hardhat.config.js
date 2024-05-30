@@ -300,6 +300,15 @@ module.exports = {
       url: 'https://rpc.katla.taiko.xyz',
       accounts: [sk],
     },
+    taikoHeklaL2Test: {
+      url: 'https://rpc.hekla.taiko.xyz',
+      accounts: [sk],
+    },
+    taiko: {
+      url: 'https://rpc.mainnet.taiko.xyz',
+      accounts: [sk],
+      gasPrice: 12000000,
+    },
     beraTest: {
       url: 'https://artio.rpc.berachain.com/',
       accounts: [sk],
@@ -326,6 +335,10 @@ module.exports = {
     },
     modeMainnet: {
       url: 'https://mainnet.mode.network/',
+      accounts: [sk],
+    },
+    BOB: {
+      url: 'https://rpc.gobob.xyz',
       accounts: [sk],
     },
   },
