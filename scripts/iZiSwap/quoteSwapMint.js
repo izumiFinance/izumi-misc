@@ -1,4 +1,6 @@
 const quoterABI = require('./abi/quoterSwapMint.json')
+const poolABI = require('./abi/pool.json')
+const erc20ABI = require('./abi/erc20.json')
 const { default: BigNumber } = require('bignumber.js')
 const {ethers} = require("hardhat");
 const Web3 = require("web3");
@@ -32,7 +34,25 @@ async function main() {
     const fee = Number(confJson['fee'])
     const quoterSwapMint = new web3.eth.Contract(quoterABI, quoterSwapMintAddress)
     const poolAddress = await quoterSwapMint.methods.pool(tokenAAddress, tokenBAddress, fee).call()
+    const poolContract = new web3.eth.Contract(poolABI, poolAddress);
+    const {currentPoint:_currentPt} = await poolContract.methods.state().call();
+    const currentPoint = Number(_currentPt)
     const targetPt = Number(confJson['targetPt'])
+    const suggestSwapAmountDecimal = confJson['suggestSwapAmountDecimal']
+    let amount = '0';
+    if (targetPt < currentPoint) {
+        // need x2y
+        const tokenAddress = tokenAAddress.toLowerCase() < tokenBAddress.toLowerCase() ? tokenAAddress : tokenBAddress
+        const token = new web3.eth.Contract(erc20ABI, tokenAddress)
+        const decimals = await token.methods.decimals().call()
+        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals)
+    } else if (targetPt > currentPoint) {
+        // need y2x
+        const tokenAddress = tokenAAddress.toLowerCase() < tokenBAddress.toLowerCase() ? tokenBAddress : tokenAAddress
+        const token = new web3.eth.Contract(erc20ABI, tokenAddress)
+        const decimals = await token.methods.decimals().call()
+        amount = new BigNumber(suggestSwapAmountDecimal).times(10**decimals)
+    }
     const {
         payAmountX, 
         payAmountY,
@@ -42,6 +62,7 @@ async function main() {
     } = await quoterSwapMint.methods.swap({
         poolAddress,
         targetPt,
+        amount
     }).call()
 
     let swapAmountA = payAmountX.toString()

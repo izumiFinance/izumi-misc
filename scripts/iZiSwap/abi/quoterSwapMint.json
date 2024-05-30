@@ -133,6 +133,11 @@
               "internalType": "int24",
               "name": "targetPt",
               "type": "int24"
+            },
+            {
+              "internalType": "uint128",
+              "name": "amount",
+              "type": "uint128"
             }
           ],
           "internalType": "struct QuoterSwapMint.QuoteParams",
