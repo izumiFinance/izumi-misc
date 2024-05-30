@@ -1,0 +1,51 @@
+[
+
+    {
+        "inputs": [],
+        "name": "state",
+        "outputs": [
+          {
+            "internalType": "uint160",
+            "name": "sqrtPrice_96",
+            "type": "uint160"
+          },
+          {
+            "internalType": "int24",
+            "name": "currentPoint",
+            "type": "int24"
+          },
+          {
+            "internalType": "uint16",
+            "name": "observationCurrentIndex",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "observationQueueLen",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "observationNextQueueLen",
+            "type": "uint16"
+          },
+          {
+            "internalType": "bool",
+            "name": "locked",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint128",
+            "name": "liquidity",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint128",
+            "name": "liquidityX",
+            "type": "uint128"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

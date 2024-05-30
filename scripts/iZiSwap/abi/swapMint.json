@@ -1,0 +1,111 @@
+[
+    {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "tokenX",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "tokenY",
+            "type": "address"
+          },
+          {
+            "internalType": "uint24",
+            "name": "fee",
+            "type": "uint24"
+          }
+        ],
+        "name": "pool",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "components": [
+            {
+                "internalType": "address",
+                "name": "poolAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "int24",
+                "name": "targetPt",
+                "type": "int24"
+            },
+            {
+                "internalType": "int24",
+                "name": "leftPt",
+                "type": "int24"
+            },
+            {
+                "internalType": "int24",
+                "name": "rightPt",
+                "type": "int24"
+            },
+            {
+                "internalType": "uint128",
+                "name": "amountX",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "amountY",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "minAmountX",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "minAmountY",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "swapAmountX",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "swapAmountY",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "swapMinAcquireX",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "swapMinAcquireY",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint256",
+                "name": "deadline",
+                "type": "uint256"
+            }
+            ],
+            "internalType": "struct SwapMint.SwapMintParams",
+            "name": "params",
+            "type": "tuple"
+        }
+        ],
+        "name": "swapMint",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    }
+]

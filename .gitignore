@@ -11,4 +11,4 @@ node_modules/
 package-lock.json
 artifacts/
 trash/
-
+tmp/
