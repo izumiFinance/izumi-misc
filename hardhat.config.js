@@ -337,10 +337,10 @@ module.exports = {
       url: 'https://mainnet.mode.network/',
       accounts: [sk],
     },
-<<<<<<< HEAD
     BOB: {
       url: 'https://rpc.gobob.xyz',
-=======
+      accounts: [sk],
+    },
     XLayer: {
       // url: 'https://rpc.xlayer.tech',
       url: 'https://xlayerrpc.okx.com',
@@ -353,7 +353,6 @@ module.exports = {
     },
     klaytn: {
       url: 'https://klaytn-pokt.nodies.app',
->>>>>>> fd86b81429d613433399b7ad94ef0112d2541734
       accounts: [sk],
     },
   },
