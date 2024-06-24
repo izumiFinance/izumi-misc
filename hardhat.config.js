@@ -363,6 +363,10 @@ module.exports = {
       url: 'https://sepolia-rpc.kakarot.org',
       accounts: [sk],
     },
+    core: {
+      url: 'https://core.public.infstones.com',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
