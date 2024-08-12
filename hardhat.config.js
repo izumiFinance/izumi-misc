@@ -371,6 +371,10 @@ module.exports = {
       url: 'https://rpc.gravity.xyz',
       accounts: [sk],
     },
+    iotex: {
+      url: 'https://babel-api.fastblocks.io',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
