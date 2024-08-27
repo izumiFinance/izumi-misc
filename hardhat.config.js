@@ -375,6 +375,14 @@ module.exports = {
       url: 'https://babel-api.fastblocks.io',
       accounts: [sk],
     },
+    duckChainTest: {
+      url: 'https://testnet-rpc.duckchain.io',
+      accounts: [sk],
+    },
+    flowTest: {
+      url: 'https://testnet.evm.nodes.onflow.org',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
