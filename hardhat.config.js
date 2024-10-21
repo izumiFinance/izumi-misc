@@ -383,6 +383,14 @@ module.exports = {
       url: 'https://testnet.evm.nodes.onflow.org',
       accounts: [sk],
     },
+    flow: {
+      url: 'https://mainnet.evm.nodes.onflow.org',
+      accounts: [sk],
+    },
+    duckChainMainnet: {
+      url: 'https://rpc.duckchain.io',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
