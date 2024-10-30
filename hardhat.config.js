@@ -359,7 +359,7 @@ module.exports = {
       url: 'https://evm.kava-rpc.com',
       accounts: [sk],
     },
-    kakarotSepoliaTest: {
+    kakarotStarknetSepoliaTest: {
       url: 'https://sepolia-rpc.kakarot.org',
       accounts: [sk],
     },
@@ -381,6 +381,14 @@ module.exports = {
     },
     flowTest: {
       url: 'https://testnet.evm.nodes.onflow.org',
+      accounts: [sk],
+    },
+    flow: {
+      url: 'https://mainnet.evm.nodes.onflow.org',
+      accounts: [sk],
+    },
+    morph: {
+      url: 'https://rpc.morphl2.io',
       accounts: [sk],
     },
   },
