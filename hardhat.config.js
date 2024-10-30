@@ -391,6 +391,10 @@ module.exports = {
       url: 'https://rpc.morphl2.io',
       accounts: [sk],
     },
+    duckChainMainnet: {
+      url: 'https://rpc.duckchain.io',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
