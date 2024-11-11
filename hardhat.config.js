@@ -395,6 +395,10 @@ module.exports = {
       url: 'https://rpc.duckchain.io',
       accounts: [sk],
     },
+    formicariumTest: {
+      url: 'https://rpc.formicarium.memecore.net',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
