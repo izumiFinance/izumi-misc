@@ -399,6 +399,10 @@ module.exports = {
       url: 'https://rpc.formicarium.memecore.net',
       accounts: [sk],
     },
+    tacTurinTest: {
+      url: 'https://turin.rpc.tac.build',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
