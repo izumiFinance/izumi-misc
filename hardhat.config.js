@@ -403,6 +403,10 @@ module.exports = {
       url: 'https://turin.rpc.tac.build',
       accounts: [sk],
     },
+    plume: {
+      url: 'https://rpc.plumenetwork.xyz',
+      accounts: [sk],
+    },
   },
   etherscan: {
     customChains:[
