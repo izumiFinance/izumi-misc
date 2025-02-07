@@ -87,7 +87,9 @@ module.exports = {
       accounts: [sk]
     },
     bscTest: {
-	    url: 'https://data-seed-prebsc-1-s2.binance.org:8545/',
+url: 'https://bsc-testnet-rpc.publicnode.com',
+//      url: 'https://endpoints.omniatech.io/v1/bsc/testnet/public',
+//	    url: 'https://data-seed-prebsc-1-s2.binance.org:8545/',
       accounts: [sk],
       // gas: 90000000,
       gasPrice: 20000000000,
@@ -405,6 +407,26 @@ module.exports = {
     },
     plume: {
       url: 'https://rpc.plumenetwork.xyz',
+      accounts: [sk],
+    },
+    hashKey: {
+      url: 'https://mainnet.hsk.xyz',
+      accounts: [sk],
+    },
+    monadTest: {
+      url: 'https://rpc.monad-testnet.category.xyz/rpc/SPa4TbSgMJxz5ywmzYvvc9O5nkAVGTgOcsi7yErG',
+      accounts: [sk],
+    },
+    rootstock: {
+      url: 'https://public-node.rsk.co',
+      accounts: [sk],
+    },
+    hemi: {
+      url: 'https://rpc.hemi.network/rpc',
+      accounts: [sk],
+    },
+    overProtocol: {
+      url: 'https://rpc.overprotocol.com/',
       accounts: [sk],
     },
   },
