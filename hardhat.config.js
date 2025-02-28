@@ -6,10 +6,8 @@ require("@cronos-labs/hardhat-cronoscan")
 const secret = require('./.secret.js');
 
 const sk = secret.pk;
-const sk2 = secret.pk2;
-const sk3 = secret.pk3;
 const apiKey = secret.apiKey;
-const izumiRpcUrl = "http://47.241.103.6:9545";
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -42,12 +40,6 @@ module.exports = {
   },
 
   networks: {
-    izumiTest: {
-      url: izumiRpcUrl,
-      gas: 8000000,
-      gasPrice: 20000000000,
-      accounts: [sk, sk2, sk3]
-    },
     arbitrum: {
       url: 'https://arb1.arbitrum.io/rpc',
       accounts: [sk]
